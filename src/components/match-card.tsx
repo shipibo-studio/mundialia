@@ -12,8 +12,8 @@ export function MatchCard({ partido }: MatchCardProps) {
   const [expanded, setExpanded] = useState(false);
   const p = partido;
 
-  const isBrasil = p.nota.toLowerCase().includes("brasil");
-  const isInaugural = p.nota.toLowerCase().includes("inaugural");
+  const isBrasil = p.nota?.toLowerCase().includes("brasil") ?? false;
+  const isInaugural = p.nota?.toLowerCase().includes("inaugural") ?? false;
 
   const accentColorClass = isInaugural
     ? "bg-error"

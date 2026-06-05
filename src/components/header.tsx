@@ -25,8 +25,8 @@ export function Header({ activeTab: externalTab, onTabChange }: HeaderProps) {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/5 shadow-lg">
-      <div className="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+    <header className="fixed top-0 w-full z-50">
+      <div className="flex justify-between items-center px-10 py-5 w-[calc(100%-2rem)] max-w-container-max mx-auto glass-card backdrop-blur-xl rounded-b-xl border border-primary/40 shadow-2xl">
         <div className="typo-headline-lg text-primary tracking-tight uppercase font-bold neon-text-cyan">
           FIFA WORLD CUP 2026
         </div>

@@ -45,7 +45,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-background text-on-surface selection:bg-primary selection:text-on-primary">
         <Header />
-        <main className="pt-24 pb-20 md:pb-12 px-gutter max-w-container-max mx-auto overflow-x-hidden">
+        <main className="pt-28 pb-12 md:pb-4 px-gutter max-w-container-max mx-auto overflow-x-hidden">
           {children}
         </main>
         <Footer />

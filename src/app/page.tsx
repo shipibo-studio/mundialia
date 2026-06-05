@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { mundialData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Hero } from "@/components/hero";
@@ -8,7 +8,7 @@ import { MatchCard } from "@/components/match-card";
 import { CanalesCard } from "@/components/canales-card";
 import { KnockoutCard } from "@/components/knockout-card";
 import { formatFechaCompleta } from "@/lib/utils";
-import type { Partido } from "@/types";
+import type { Partido, Jornada } from "@/types";
 
 const groups = [
   { id: "todos", label: "TODOS" },
@@ -16,6 +16,14 @@ const groups = [
   { id: "B", label: "B" },
   { id: "C", label: "C" },
   { id: "D", label: "D" },
+  { id: "E", label: "E" },
+  { id: "F", label: "F" },
+  { id: "G", label: "G" },
+  { id: "H", label: "H" },
+  { id: "I", label: "I" },
+  { id: "J", label: "J" },
+  { id: "K", label: "K" },
+  { id: "L", label: "L" },
 ];
 
 function JSONDisplay({ data }: { data: unknown }) {
@@ -59,12 +67,13 @@ function JSONDisplay({ data }: { data: unknown }) {
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("fixture");
+  const [activeTab] = useState("fixture");
   const [filterGroup, setFilterGroup] = useState("todos");
   const [search, setSearch] = useState("");
 
   const filteredJornadas = useMemo(() => {
     return mundialData.fixture.fase_grupos
+      .filter((j): j is Jornada & { partidos: Partido[] } => !!j.partidos)
       .map((jornada) => ({
         ...jornada,
         partidos: jornada.partidos.filter((p: Partido) => {
@@ -73,8 +82,7 @@ export default function Home() {
           const q = search.toLowerCase();
           const matchesSearch =
             !q ||
-            p.partido.toLowerCase().includes(q) ||
-            p.sede.toLowerCase().includes(q);
+            p.partido.toLowerCase().includes(q);
           return matchesGroup && matchesSearch;
         }),
       }))
@@ -82,6 +90,19 @@ export default function Home() {
   }, [filterGroup, search]);
 
   const hasResults = filteredJornadas.length > 0;
+  const todayStr = new Date().toISOString().slice(0, 10);
+  const scrolledRef = useRef(false);
+
+  useEffect(() => {
+    if (scrolledRef.current || filterGroup !== "todos" || search) return;
+    const today = new Date();
+    const todayStr = today.toISOString().slice(0, 10);
+    const target = document.getElementById(`jornada-${todayStr}`);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrolledRef.current = true;
+    }
+  }, [filteredJornadas, filterGroup, search]);
 
   return (
     <>
@@ -129,10 +150,10 @@ export default function Home() {
           <div className="space-y-lg">
             {hasResults ? (
               filteredJornadas.map((jornada) => (
-                <div key={jornada.fecha} className="space-y-md">
+                <div key={jornada.fecha} id={`jornada-${jornada.fecha}`} className={cn("space-y-md", jornada.fecha && jornada.fecha < todayStr && "match-past")}>
                   <div className="flex items-center gap-md border-b border-white/5 pb-2 mt-8">
                     <span className="typo-headline-md text-primary neon-text-cyan uppercase">
-                      {formatFechaCompleta(jornada.dia, jornada.fecha)}
+                      {formatFechaCompleta(jornada.dia!, jornada.fecha!)}
                     </span>
                     <div className="h-px bg-white/5 flex-1" />
                     <span className="typo-label-caps bg-surface-navy px-3 py-1 rounded-full border border-white/10">
@@ -148,7 +169,7 @@ export default function Home() {
               ))
             ) : (
               <div className="flex flex-col items-center justify-center py-20 text-text-muted">
-                <span className="material-symbols-outlined text-4xl mb-4">
+                <span className="material-symbols-outlined text-[42px] mb-4">
                   search_off
                 </span>
                 <p className="typo-body-lg">
@@ -219,8 +240,8 @@ export default function Home() {
       {activeTab === "eliminatorias" && (
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-            {mundialData.fixture.fase_eliminatoria.map((fase) => (
-              <KnockoutCard key={fase.fase} fase={fase} />
+            {Object.entries(mundialData.fixture.fase_eliminatoria).map(([key, data]) => (
+              <KnockoutCard key={key} nombre={key.replace(/_/g, " ")} data={data} />
             ))}
           </div>
         </section>
