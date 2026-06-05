@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Mundial FIFA 2026 — Fixture Premium (Cyan Edition)</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#e0e2ee",
+                        "secondary-fixed": "#00f2ff",
+                        "inverse-on-surface": "#2d303a",
+                        "on-tertiary-fixed-variant": "#930001",
+                        "background": "#0a0e16",
+                        "on-primary-fixed-variant": "#004f54",
+                        "text-muted": "#849495",
+                        "secondary": "#00f2ff",
+                        "surface-navy": "#10131c",
+                        "error-container": "#93000a",
+                        "on-primary": "#002022",
+                        "on-tertiary-fixed": "#410000",
+                        "secondary-fixed-dim": "#00dbe7",
+                        "on-secondary": "#00363a",
+                        "surface-container-high": "#262a33",
+                        "on-tertiary-container": "#ac0203",
+                        "outline-variant": "#3a494b",
+                        "surface-bright": "#353943",
+                        "on-error": "#000000",
+                        "surface-tint": "#00f2ff",
+                        "outline": "#849495",
+                        "tertiary-fixed": "#ffdad5",
+                        "inverse-primary": "#00696f",
+                        "on-background": "#e0e2ee",
+                        "surface-container-highest": "#31353e",
+                        "surface-dim": "#10131c",
+                        "secondary-container": "#004f54",
+                        "on-secondary-fixed-variant": "#004f54",
+                        "surface-variant": "#31353e",
+                        "on-primary-fixed": "#002022",
+                        "on-secondary-container": "#e1fdff",
+                        "error": "#ffb4ab",
+                        "primary": "#00f2ff",
+                        "primary-fixed": "#74f5ff",
+                        "primary-fixed-dim": "#00dbe7",
+                        "tertiary-container": "#ffb7ac",
+                        "surface": "#10131c",
+                        "accent-glow": "rgba(0, 242, 255, 0.2)",
+                        "pitch-green": "#39FF14",
+                        "on-tertiary": "#690001",
+                        "surface-container-low": "#181c24",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "tertiary": "#ffddd8",
+                        "on-primary-container": "#006a71",
+                        "surface-container-lowest": "#0a0e16",
+                        "on-error-container": "#ffdad6",
+                        "surface-container": "#1c2028",
+                        "on-surface-variant": "#b9cacb",
+                        "chile-blue": "#0070FF",
+                        "on-secondary-fixed": "#00115a",
+                        "inverse-surface": "#e0e2ee",
+                        "surface-glass": "rgba(10, 14, 22, 0.75)",
+                        "primary-container": "#00f2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1120px",
+                        "gutter": "16px",
+                        "xl": "48px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xs": "8px"
+                    },
+                    "fontFamily": {
+                        "micro": ["DM Sans"],
+                        "stat-lg": ["Sora"],
+                        "label-caps": ["DM Sans"],
+                        "headline-md": ["Sora"],
+                        "body-md": ["DM Sans"],
+                        "body-lg": ["DM Sans"],
+                        "display-hero": ["Sora"],
+                        "display-hero-mobile": ["Sora"],
+                        "headline-lg": ["Sora"]
+                    },
+                    "fontSize": {
+                        "micro": ["10px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "stat-lg": ["48px", { "lineHeight": "1", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "400" }],
+                        "body-md": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "600" }],
+                        "display-hero": ["72px", { "lineHeight": "1.1", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "display-hero-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(24px);
+        }
+
+        .glass-card {
+            background: rgba(30, 35, 45, 0.4);
+            border: 1px solid rgba(0, 242, 255, 0.08);
+        }
+
+        .match-card-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .neon-text-gold {
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+
+        .neon-text-green {
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .neon-text-red {
+            text-shadow: 0 0 10px rgba(255, 180, 171, 0.5);
+        }
+
+        .neon-border-gold {
+            border-color: rgba(0, 242, 255, 0.4);
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
+        }
+
+        .neon-border-green {
+            border-color: rgba(57, 255, 20, 0.4);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);
+        }
+
+        .neon-border-red {
+            border-color: rgba(255, 180, 171, 0.4);
+            box-shadow: 0 0 10px rgba(255, 180, 171, 0.1);
+        }
+
+        .neon-glow-gold {
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        .syntax-key {
+            color: #00f2ff;
+        }
+
+        .syntax-string {
+            color: #e1fdff;
+        }
+
+        .syntax-number {
+            color: #74f5ff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #31353e;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+    </style>
+</head>
+
+<body class="bg-background text-on-surface selection:bg-primary selection:text-on-primary">
+    <header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-white/5 shadow-lg">
+        <div class="flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto">
+            <div class="font-headline-lg text-headline-lg text-primary tracking-tight uppercase neon-text-gold">FIFA
+                WORLD CUP 2026</div>
+            <nav class="hidden md:flex gap-md">
+                <button
+                    class="nav-link font-label-caps text-label-caps uppercase text-primary border-b-2 border-primary pb-1 transition-all duration-300 neon-text-gold"
+                    data-tab="fixture" onclick="switchTab('fixture')">Fixture</button>
+                <button
+                    class="nav-link text-on-surface-variant uppercase hover:text-primary transition-all duration-300 font-label-caps text-label-caps"
+                    data-tab="canales" onclick="switchTab('canales')">Canales</button>
+                <button
+                    class="nav-link text-on-surface-variant uppercase hover:text-primary transition-all duration-300 font-label-caps text-label-caps"
+                    data-tab="eliminatorias" onclick="switchTab('eliminatorias')">Eliminatorias</button>
+            </nav>
+            <div class="flex gap-xs">
+                <span
+                    class="material-symbols-outlined text-primary p-xs rounded-full hover:bg-white/5 cursor-pointer neon-text-gold">notifications</span>
+                <span
+                    class="material-symbols-outlined text-primary p-xs rounded-full hover:bg-white/5 cursor-pointer neon-text-gold">person</span>
+            </div>
+        </div>
+    </header>
+    <main class="pt-24 pb-20 md:pb-12 px-gutter max-w-container-max mx-auto overflow-x-hidden">
+        <!-- Hero Section -->
+        <section
+            class="relative overflow-hidden rounded-xl bg-surface-navy p-lg md:p-xl mb-lg text-center border border-primary/10 shadow-2xl"
+            id="hero">
+            <div class="absolute inset-0 opacity-10 pointer-events-none"
+                style="background: radial-gradient(circle at 50% -20%, #00f2ff 0%, transparent 60%);"></div>
+            <div class="relative z-10">
+                <span
+                    class="inline-block px-4 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary font-label-caps text-label-caps mb-4 uppercase tracking-tight neon-text-gold">⚽
+                    Copa del Mundo</span>
+                <h1
+                    class="font-display-hero text-display-hero md:text-display-hero text-primary tracking-tight leading-none mb-4 drop-shadow-2xl neon-text-gold">
+                    MUNDIAL FIFA 2026</h1>
+                <p class="font-body-lg text-body-lg text-text-muted mb-8">Fixture completo · Canales Chile y Brasil</p>
+                <div class="flex flex-wrap justify-center gap-lg">
+                    <div class="flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-primary neon-text-gold">calendar_month</span>
+                        <span class="font-body-md text-body-md">11 Jun – 19 Jul 2026</span>
+                    </div>
+                    <div class="flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-primary neon-text-gold">location_on</span>
+                        <span class="font-body-md text-body-md">EE.UU. · México · Canadá</span>
+                    </div>
+                    <div class="flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-primary neon-text-gold">stadium</span>
+                        <span class="font-body-md text-body-md">48 Selecciones / 104 Partidos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Fixture Section -->
+        <section class="tab-content" id="tab-fixture">
+            <div class="flex flex-col md:flex-row gap-lg items-end mb-lg">
+                <div class="w-full md:w-auto overflow-x-auto pb-2 no-scrollbar">
+                    <div class="flex gap-xs" id="group-filters">
+                        <label class="font-label-caps text-label-caps text-text-muted self-center mr-2">GRUPOS:</label>
+                        <button
+                            class="group-filter active whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-primary text-on-primary neon-glow-gold transition-all"
+                            onclick="filterGrupo('todos', this)">TODOS</button>
+                        <button
+                            class="group-filter whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface-navy text-on-surface-variant border border-white/10 hover:border-primary transition-all"
+                            onclick="filterGrupo('A', this)">A</button>
+                        <button
+                            class="group-filter whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface-navy text-on-surface-variant border border-white/10 hover:border-primary transition-all"
+                            onclick="filterGrupo('B', this)">B</button>
+                        <button
+                            class="group-filter whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface-navy text-on-surface-variant border border-white/10 hover:border-primary transition-all"
+                            onclick="filterGrupo('C', this)">C</button>
+                        <button
+                            class="group-filter whitespace-nowrap px-4 py-2 rounded-full font-label-caps text-label-caps bg-surface-navy text-on-surface-variant border border-white/10 hover:border-primary transition-all"
+                            onclick="filterGrupo('D', this)">D</button>
+                    </div>
+                </div>
+                <div class="w-full md:flex-1 relative">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">search</span>
+                    <input
+                        class="w-full pl-12 pr-4 py-3 bg-surface-navy border border-white/10 rounded-xl font-body-md text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-text-muted"
+                        id="search-input" oninput="filterSearch(this.value)" placeholder="Buscar equipo, sede..."
+                        type="text" />
+                </div>
+            </div>
+            <div class="space-y-lg" id="fixture-container">
+                <!-- Contenido generado dinámicamente por JS -->
+            </div>
+        </section>
+        <!-- Canales Section -->
+        <section class="tab-content hidden" id="tab-canales">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-md mb-xl">
+                <div class="glass-card p-lg rounded-xl text-center border-b-2 border-primary neon-border-gold">
+                    <div class="font-stat-lg text-stat-lg text-primary neon-text-gold">104</div>
+                    <div class="font-label-caps text-label-caps text-text-muted">PARTIDOS</div>
+                </div>
+                <div class="glass-card p-lg rounded-xl text-center border-b-2 border-chile-blue">
+                    <div class="font-stat-lg text-stat-lg text-on-surface">52</div>
+                    <div class="font-label-caps text-label-caps text-text-muted">CHV (CL)</div>
+                </div>
+                <div class="glass-card p-lg rounded-xl text-center border-b-2 border-pitch-green neon-border-green">
+                    <div class="font-stat-lg text-stat-lg text-secondary neon-text-green">52</div>
+                    <div class="font-label-caps text-label-caps text-text-muted">GLOBO (BR)</div>
+                </div>
+                <div class="glass-card p-lg rounded-xl text-center border-b-2 border-error neon-border-red">
+                    <div class="font-stat-lg text-stat-lg text-error neon-text-red">104</div>
+                    <div class="font-label-caps text-label-caps text-text-muted">CAZÉTV (BR)</div>
+                </div>
+                <div class="glass-card p-lg rounded-xl text-center border-b-2 border-primary neon-border-gold">
+                    <div class="font-stat-lg text-stat-lg text-on-surface">30</div>
+                    <div class="font-label-caps text-label-caps text-text-muted">DISNEY+</div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-lg" id="canales-container">
+                <!-- Contenido generado dinámicamente por JS -->
+            </div>
+        </section>
+        <!-- Eliminatorias Section -->
+        <section class="tab-content hidden" id="tab-eliminatorias">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg" id="elim-container">
+                <!-- Contenido generado dinámicamente por JS -->
+            </div>
+        </section>
+        <!-- JSON Section -->
+        <section class="tab-content hidden" id="tab-json">
+            <div class="glass-card rounded-xl overflow-hidden border border-white/10 shadow-2xl">
+                <div class="bg-surface-navy px-gutter py-3 flex justify-between items-center border-b border-white/10">
+                    <div class="flex items-center gap-xs">
+                        <span class="material-symbols-outlined text-primary text-sm neon-text-gold">code</span>
+                        <span class="font-label-caps text-label-caps text-text-muted uppercase">mundial_2026.json</span>
+                    </div>
+                    <button
+                        class="flex items-center gap-xs px-3 py-1 bg-primary text-on-primary rounded font-label-caps text-label-caps hover:scale-105 transition-all neon-glow-gold"
+                        onclick="copyJSON()">
+                        <span class="material-symbols-outlined text-sm">content_copy</span> COPIAR
+                    </button>
+                </div>
+                <pre class="p-lg font-mono text-[13px] leading-relaxed overflow-x-auto h-[600px] text-[#cfc6af]"
+                    id="json-display">    <!-- Contenido generado dinámicamente por JS -->
+</pre>
+            </div>
+        </section>
+    </main>
+    <footer
+        class="w-full py-lg px-gutter flex flex-col items-center gap-md max-w-container-max mx-auto border-t border-white/5 opacity-80 mt-xl">
+        <div class="font-headline-md text-headline-md text-primary uppercase tracking-tight neon-text-gold">FIFA WORLD
+            CUP 2026</div>
+        <div class="flex gap-lg flex-wrap justify-center">
+            <a class="font-body-md text-body-md text-text-muted hover:text-primary transition-colors" href="#">Privacy
+                Policy</a>
+            <a class="font-body-md text-body-md text-text-muted hover:text-primary transition-colors" href="#">Terms of
+                Service</a>
+            <a class="font-body-md text-body-md text-text-muted hover:text-primary transition-colors" href="#">API
+                Documentation</a>
+            <a class="font-body-md text-body-md text-text-muted hover:text-primary transition-colors"
+                href="#">Support</a>
+        </div>
+        <div class="font-body-md text-body-md text-text-muted">© 2026 FIFA World Cup Official Data Broadcaster</div>
+    </footer>
+    <!-- Bottom Nav for Mobile -->
+    <nav
+        class="fixed bottom-0 w-full flex justify-around p-2 pb-safe bg-surface-container-highest/90 backdrop-blur-xl border-t border-white/5 md:hidden z-50">
+        <button
+            class="mobile-nav-btn active flex flex-col items-center justify-center rounded-xl p-2 transition-all duration-200 bg-primary-container text-on-primary-container neon-glow-gold"
+            data-tab="fixture" onclick="switchTab('fixture')">
+            <span class="material-symbols-outlined">calendar_month</span>
+            <span class="font-label-caps text-label-caps">Fixture</span>
+        </button>
+        <button
+            class="mobile-nav-btn flex flex-col items-center justify-center text-text-muted p-2 transition-all duration-200"
+            data-tab="canales" onclick="switchTab('canales')">
+            <span class="material-symbols-outlined">tv</span>
+            <span class="font-label-caps text-label-caps">Canales</span>
+        </button>
+        <button
+            class="mobile-nav-btn flex flex-col items-center justify-center text-text-muted p-2 transition-all duration-200"
+            data-tab="eliminatorias" onclick="switchTab('eliminatorias')">
+            <span class="material-symbols-outlined">account_tree</span>
+            <span class="font-label-caps text-label-caps">Bracket</span>
+        </button>
+        <button
+            class="mobile-nav-btn flex flex-col items-center justify-center text-text-muted p-2 transition-all duration-200"
+            data-tab="json" onclick="switchTab('json')">
+            <span class="material-symbols-outlined">code</span>
+            <span class="font-label-caps text-label-caps">JSON</span>
+        </button>
+    </nav>
+    <script>
+        const DATA = {
+            "torneo": {
+                "nombre": "Copa Mundial de la FIFA 2026",
+                "formato": "48 selecciones / 104 partidos",
+                "fecha_inicio": "2026-06-11",
+                "fecha_final": "2026-07-19",
+                "sedes": ["Estados Unidos", "México", "Canadá"]
+            },
+            "canales_por_pais": {
+                "Chile": {
+                    "nota": "Chilevisión tiene los derechos exclusivos de TV abierta. DSports transmite los 104 partidos.",
+                    "television_abierta": [{ "canal": "Chilevisión (CHV)", "partidos": "52 partidos (incl. inauguración y final)" }],
+                    "television_pago": [
+                        { "canal": "DSports (DirecTV)", "partidos": "104 partidos (completo)" },
+                        { "canal": "Disney+ Premium", "partidos": "~30 partidos destacados" }
+                    ],
+                    "youtube": [{ "canal": "CHV YouTube", "contenido": "Resúmenes y highlights" }]
+                },
+                "Brasil": {
+                    "nota": "CazéTV transmitirá los 104 partidos GRATIS en YouTube. TV Globo emitirá 52 encuentros.",
+                    "television_abierta": [{ "canal": "TV Globo", "partidos": "52 partidos (incl. todos de Brasil)" }],
+                    "television_pago": [
+                        { "canal": "SporTV", "partidos": "55 partidos en 4K" }
+                    ],
+                    "youtube": [{ "canal": "CazéTV", "partidos": "104 partidos EN VIVO — GRATIS" }]
+                }
+            },
+            "fixture": {
+                "fase_grupos": [
+                    {
+                        "fecha": "2026-06-11", "dia": "Jueves", "partidos": [
+                            { "numero": 1, "partido": "México vs. Sudáfrica", "grupo": "A", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Estadio Azteca, CDMX", "nota": "Partido inaugural", "canales_chile": { "abierta": ["CHV"], "pago": ["DSports", "DGO"] }, "canales_brasil": { "abierta": ["TV Globo"], "youtube": ["CazéTV"] } },
+                            { "numero": 2, "partido": "Corea del Sur vs. Rep. Checa", "grupo": "A", "hora_chile": "22:00", "hora_brasil": "23:00", "sede": "Estadio Akron, Guadalajara", "nota": "" }
+                        ]
+                    },
+                    {
+                        "fecha": "2026-06-12", "dia": "Viernes", "partidos": [
+                            { "numero": 3, "partido": "Canadá vs. Bosnia", "grupo": "B", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "BMO Field, Toronto", "nota": "" },
+                            { "numero": 4, "partido": "Estados Unidos vs. Paraguay", "grupo": "D", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "SoFi Stadium, Los Ángeles", "nota": "" }
+                        ]
+                    },
+                    {
+                        "fecha": "2026-06-13", "dia": "Sábado", "partidos": [
+                            { "numero": 6, "partido": "Brasil vs. Marruecos", "grupo": "C", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "MetLife Stadium, NJ", "nota": "Partido de Brasil", "canales_chile": { "abierta": ["CHV"], "pago": ["DSports"] }, "canales_brasil": { "abierta": ["TV Globo"], "youtube": ["CazéTV"] } }
+                        ]
+                    }
+                ],
+                "fase_eliminatoria": [
+                    { "fase": "Dieciseisavos", "fecha": "01-05 Jul", "partidos": "16 matches" },
+                    { "fase": "Octavos", "fecha": "07-10 Jul", "partidos": "8 matches" },
+                    { "fase": "Cuartos", "fecha": "11-12 Jul", "partidos": "4 matches" },
+                    { "fase": "Semifinales", "fecha": "14-15 Jul", "partidos": "2 matches" },
+                    { "fase": "Final", "fecha": "19 Jul", "partidos": "1 match", "sede": "MetLife Stadium, NJ" }
+                ]
+            }
+        };
+
+        let activeTab = 'fixture';
+        let currentFilterGroup = 'todos';
+        let currentSearch = '';
+
+        function switchTab(tabId) {
+            activeTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            // Header UI update
+            document.querySelectorAll('.nav-link').forEach(el => {
+                el.classList.remove('text-primary', 'border-b-2', 'border-primary', 'pb-1', 'neon-text-gold');
+                el.classList.add('text-on-surface-variant');
+                if (el.dataset.tab === tabId) {
+                    el.classList.add('text-primary', 'border-b-2', 'border-primary', 'pb-1', 'neon-text-gold');
+                    el.classList.remove('text-on-surface-variant');
+                }
+            });
+
+            // Mobile Nav update
+            document.querySelectorAll('.mobile-nav-btn').forEach(el => {
+                el.classList.remove('bg-primary-container', 'text-on-primary-container', 'neon-glow-gold');
+                el.classList.add('text-text-muted');
+                if (el.dataset.tab === tabId) {
+                    el.classList.add('bg-primary-container', 'text-on-primary-container', 'neon-glow-gold');
+                    el.classList.remove('text-text-muted');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function filterGrupo(group, btn) {
+            currentFilterGroup = group;
+            document.querySelectorAll('.group-filter').forEach(el => {
+                el.classList.remove('bg-primary', 'text-on-primary', 'border-none', 'neon-glow-gold');
+                el.classList.add('bg-surface-navy', 'text-on-surface-variant', 'border', 'border-white/10');
+            });
+            btn.classList.add('bg-primary', 'text-on-primary', 'border-none', 'neon-glow-gold');
+            btn.classList.remove('bg-surface-navy', 'text-on-surface-variant', 'border', 'border-white/10');
+            renderFixture();
+        }
+
+        function filterSearch(val) {
+            currentSearch = val.toLowerCase();
+            renderFixture();
+        }
+
+        function toggleMatchDetails(id) {
+            const content = document.getElementById(`details-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        function renderFixture() {
+            const container = document.getElementById('fixture-container');
+            container.innerHTML = '';
+
+            DATA.fixture.fase_grupos.forEach(jornada => {
+                const filteredPartidos = jornada.partidos.filter(p => {
+                    const matchesGroup = currentFilterGroup === 'todos' || p.grupo === currentFilterGroup;
+                    const matchesSearch = p.partido.toLowerCase().includes(currentSearch) || p.sede.toLowerCase().includes(currentSearch);
+                    return matchesGroup && matchesSearch;
+                });
+
+                if (filteredPartidos.length === 0) return;
+
+                const daySection = document.createElement('div');
+                daySection.className = 'space-y-md';
+                daySection.innerHTML = `
+                    <div class="flex items-center gap-md border-b border-white/5 pb-2 mt-8">
+                        <span class="font-headline-md text-headline-md text-primary neon-text-gold uppercase">${jornada.dia}</span>
+                        <span class="font-body-md text-body-md text-text-muted">${jornada.fecha}</span>
+                        <div class="h-px bg-white/5 flex-1"></div>
+                        <span class="font-label-caps text-label-caps bg-surface-navy px-3 py-1 rounded-full border border-white/10">${filteredPartidos.length} Partidos</span>
+                    </div>
+                `;
+
+                const grid = document.createElement('div');
+                grid.className = 'grid gap-md';
+
+                filteredPartidos.forEach(p => {
+                    const isBrasil = p.nota.toLowerCase().includes('brasil');
+                    const isInaugural = p.nota.toLowerCase().includes('inaugural');
+                    const accentColorClass = isInaugural ? 'bg-error' : (isBrasil ? 'bg-pitch-green' : 'bg-primary/20');
+                    const cardBorderClass = isInaugural ? 'neon-border-red' : (isBrasil ? 'neon-border-green' : 'border-primary/10');
+                    const iconColorClass = isInaugural ? 'text-error neon-text-red' : (isBrasil ? 'text-secondary-fixed-dim neon-text-green' : 'text-primary neon-text-gold');
+
+                    const matchCard = document.createElement('div');
+                    matchCard.className = `glass-card rounded-xl overflow-hidden border ${cardBorderClass} match-card-transition cursor-pointer hover:shadow-xl hover:scale-[1.01]`;
+                    matchCard.onclick = () => toggleMatchDetails(p.numero);
+                    matchCard.innerHTML = `
+                        <div class="flex">
+                            <div class="w-1.5 ${accentColorClass}"></div>
+                            <div class="flex-1 p-md flex flex-col md:flex-row md:items-center justify-between gap-md">
+                                <div class="flex items-center gap-md flex-1">
+                                    <div class="w-10 h-10 rounded-lg bg-surface-navy flex items-center justify-center font-headline-md text-headline-md ${iconColorClass}">#${p.numero}</div>
+                                    <div>
+                                        <div class="font-label-caps text-label-caps text-primary mb-0.5 neon-text-gold uppercase">GRUPO ${p.grupo}</div>
+                                        <div class="font-body-lg text-body-lg text-on-surface">${p.partido}</div>
+                                    </div>
+                                    ${isInaugural ? '<span class="px-2 py-0.5 rounded bg-error/20 text-error text-[10px] font-bold uppercase tracking-wider neon-text-red">Inaugural</span>' : ''}
+                                    ${isBrasil ? '<span class="px-2 py-0.5 rounded bg-secondary/20 text-secondary text-[10px] font-bold uppercase tracking-wider neon-text-green">Brasil</span>' : ''}
+                                </div>
+                                <div class="flex items-center gap-xl md:border-l border-white/10 md:pl-xl">
+                                    <div class="text-center">
+                                        <div class="flex items-center justify-center gap-1 mb-1">
+                                            <span class="text-xs">🇨🇱</span> <span class="font-headline-md text-headline-md">${p.hora_chile}</span>
+                                        </div>
+                                        <div class="font-label-caps text-label-caps text-text-muted uppercase">CHILE</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="flex items-center justify-center gap-1 mb-1">
+                                            <span class="text-xs">🇧🇷</span> <span class="font-headline-md text-headline-md">${p.hora_brasil}</span>
+                                        </div>
+                                        <div class="font-label-caps text-label-caps text-text-muted uppercase">BRASIL</div>
+                                    </div>
+                                    <span class="material-symbols-outlined text-text-muted transition-transform duration-300" id="icon-${p.numero}">expand_more</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="details-${p.numero}" class="hidden bg-surface-navy border-t border-white/5 p-lg">
+                            <div class="grid md:grid-cols-3 gap-lg">
+                                <div class="col-span-1 md:col-span-1">
+                                    <div class="font-label-caps text-label-caps text-text-muted mb-2 uppercase tracking-widest flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-sm">location_on</span> Sede
+                                    </div>
+                                    <div class="font-body-md text-body-md">${p.sede}</div>
+                                </div>
+                                <div class="col-span-2 grid md:grid-cols-2 gap-md">
+                                    <div class="space-y-3">
+                                        <div class="font-label-caps text-label-caps text-chile-blue uppercase">🇨🇱 Cobertura Chile</div>
+                                        <div class="flex flex-wrap gap-xs">
+                                            ${p.canales_chile ? `
+                                                ${p.canales_chile.abierta ? p.canales_chile.abierta.map(c => `<span class="px-3 py-1 rounded bg-white/5 text-xs border border-white/10">${c}</span>`).join('') : ''}
+                                                ${p.canales_chile.pago ? p.canales_chile.pago.map(c => `<span class="px-3 py-1 rounded bg-chile-blue/20 text-white text-xs border border-chile-blue/30">${c}</span>`).join('') : ''}
+                                            ` : '<span class="text-xs text-text-muted italic">Consultar operador local</span>'}
+                                        </div>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="font-label-caps text-label-caps text-primary uppercase neon-text-gold">🇧🇷 Cobertura Brasil</div>
+                                        <div class="flex flex-wrap gap-xs">
+                                            ${p.canales_brasil ? `
+                                                ${p.canales_brasil.abierta ? p.canales_brasil.abierta.map(c => `<span class="px-3 py-1 rounded bg-primary/20 text-white text-xs border border-primary/30">${c}</span>`).join('') : ''}
+                                                ${p.canales_brasil.youtube ? p.canales_brasil.youtube.map(c => `<span class="px-3 py-1 rounded bg-error/20 text-error text-xs border border-error/30">${c}</span>`).join('') : ''}
+                                            ` : '<span class="text-xs text-text-muted italic">CazéTV (YouTube) / Globo</span>'}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(matchCard);
+                });
+
+                daySection.appendChild(grid);
+                container.appendChild(daySection);
+            });
+
+            if (container.innerHTML === '') {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-20 text-text-muted">
+                        <span class="material-symbols-outlined text-4xl mb-4">search_off</span>
+                        <p class="font-body-lg text-body-lg">No se encontraron partidos que coincidan con tu búsqueda.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderCanales() {
+            const container = document.getElementById('canales-container');
+            container.innerHTML = '';
+
+            Object.keys(DATA.canales_por_pais).forEach(pais => {
+                const data = DATA.canales_por_pais[pais];
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-xl p-lg space-y-lg';
+                card.innerHTML = `
+                    <div class="flex items-center gap-md border-b border-white/5 pb-4">
+                        <div class="w-12 h-12 rounded-full bg-surface-navy flex items-center justify-center text-2xl shadow-inner border border-white/10">
+                            ${pais === 'Chile' ? '🇨🇱' : '🇧🇷'}
+                        </div>
+                        <div>
+                            <h3 class="font-headline-lg text-headline-lg text-primary neon-text-gold">${pais.toUpperCase()}</h3>
+                            <p class="font-body-md text-body-md text-text-muted leading-tight">${data.nota}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-lg">
+                        <div>
+                            <div class="font-label-caps text-label-caps text-primary mb-3 flex items-center gap-2 neon-text-gold uppercase">
+                                <span class="material-symbols-outlined text-sm">settings_input_antenna</span> TV ABIERTA
+                            </div>
+                            <div class="grid gap-xs">
+                                ${data.television_abierta.map(ch => `
+                                    <div class="flex justify-between items-center p-md bg-white/5 rounded-lg border border-white/5">
+                                        <span class="font-body-lg text-body-lg">${ch.canal}</span>
+                                        <span class="font-body-md text-body-md text-text-muted">${ch.partidos}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-label-caps text-label-caps text-chile-blue mb-3 flex items-center gap-2 uppercase">
+                                <span class="material-symbols-outlined text-sm">credit_card</span> TV PAGO / STREAMING
+                            </div>
+                            <div class="grid gap-xs">
+                                ${data.television_pago.map(ch => `
+                                    <div class="flex justify-between items-center p-md bg-white/5 rounded-lg border border-white/5">
+                                        <span class="font-body-lg text-body-lg">${ch.canal}</span>
+                                        <span class="font-body-md text-body-md text-text-muted text-right">${ch.partidos}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="font-label-caps text-label-caps text-error mb-3 flex items-center gap-2 neon-text-red uppercase">
+                                <span class="material-symbols-outlined text-sm">play_circle</span> YOUTUBE
+                            </div>
+                            <div class="grid gap-xs">
+                                ${data.youtube.map(ch => `
+                                    <div class="flex justify-between items-center p-md bg-error/10 rounded-lg border border-error/20">
+                                        <span class="font-body-lg text-body-lg text-error neon-text-red">${ch.canal}</span>
+                                        <span class="font-body-md text-body-md text-error/80">${ch.partidos || ch.contenido}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderEliminatorias() {
+            const container = document.getElementById('elim-container');
+            container.innerHTML = '';
+
+            DATA.fixture.fase_eliminatoria.forEach(f => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-xl p-lg relative overflow-hidden group border-white/5';
+                card.innerHTML = `
+                    <div class="absolute -right-8 -bottom-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <span class="material-symbols-outlined text-[120px] text-primary">trophy</span>
+                    </div>
+                    <div class="font-label-caps text-label-caps text-primary mb-2 uppercase tracking-widest neon-text-gold">${f.partidos}</div>
+                    <h3 class="font-headline-lg text-headline-lg mb-1"> ${f.fase}</h3>
+                    <div class="flex items-center gap-xs text-text-muted mb-6">
+                        <span class="material-symbols-outlined text-sm">calendar_month</span>
+                        <span class="font-body-md text-body-md">${f.fecha}</span>
+                    </div>
+                    ${f.sede ? `
+                        <div class="flex items-center gap-xs text-on-surface-variant bg-white/5 p-3 rounded-lg border border-primary/20 neon-border-gold">
+                            <span class="material-symbols-outlined text-sm text-primary neon-text-gold">location_on</span>
+                            <span class="font-body-md text-body-md">${f.sede}</span>
+                        </div>
+                    ` : `
+                        <div class="flex items-center gap-xs text-text-muted italic bg-white/5 p-3 rounded-lg border border-white/5">
+                            <span class="material-symbols-outlined text-sm">info</span>
+                            <span class="font-body-md text-body-md">Múltiples Sedes</span>
+                        </div>
+                    `}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function renderJSON() {
+            const display = document.getElementById('json-display');
+            const str = JSON.stringify(DATA, null, 4);
+            display.innerHTML = str
+                .replace(/"([^"]+)":/g, '<span class="syntax-key">"$1"</span>:')
+                .replace(/: "([^"]*)"/g, ': <span class="syntax-string">"$1"</span>')
+                .replace(/: (\d+)/g, ': <span class="syntax-number">$1</span>');
+        }
+
+        function copyJSON() {
+            const str = JSON.stringify(DATA, null, 4);
+            navigator.clipboard.writeText(str);
+            alert('JSON copiado al portapapeles');
+        }
+
+        // Initialize
+        renderFixture();
+        renderCanales();
+        renderEliminatorias();
+        renderJSON();
+    </script>
+</body>
+
+</html>

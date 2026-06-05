@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mundial FIFA 2026 — Fixture y Canales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cl-green: #00a651;
+    --cl-red: #d52b1e;
+    --br-green: #009c3b;
+    --br-yellow: #ffdf00;
+    --br-blue: #003087;
+    --bg: #0a0e17;
+    --surface: #131825;
+    --surface2: #1c2333;
+    --surface3: #242d3e;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #eef0f4;
+    --muted: #7a8499;
+    --muted2: #a0aabd;
+    --accent: #e8c642;
+    --accent2: #f0d060;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0a0e17 0%, #0d1a2e 50%, #0a1520 100%);
+    border-bottom: 1px solid var(--border2);
+    padding: 40px 24px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,198,66,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232,198,66,0.12);
+    border: 1px solid rgba(232,198,66,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 8vw, 72px);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: var(--muted2);
+    margin-bottom: 24px;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted2);
+  }
+  .hero-meta-item span.val {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 16px 12px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .tab-panel { display: none; padding: 28px 0 48px; }
+  .tab-panel.active { display: block; }
+
+  /* FILTERS */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    align-items: center;
+  }
+  .filter-bar label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .filter-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .18s;
+  }
+  .filter-btn:hover { border-color: var(--border2); color: var(--text); }
+  .filter-btn.active { background: var(--accent); color: #0a0e17; border-color: var(--accent); font-weight: 600; }
+
+  .search-input {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    width: 220px;
+    outline: none;
+    transition: border-color .18s;
+  }
+  .search-input::placeholder { color: var(--muted); }
+  .search-input:focus { border-color: var(--accent); }
+
+  /* DATE SECTION */
+  .date-section { margin-bottom: 8px; }
+  .date-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .date-header .dia {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    min-width: 90px;
+  }
+  .date-header .fecha-full {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .date-header .match-count {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--surface2);
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  /* MATCH CARD */
+  .matches-grid {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .match-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: border-color .18s, background .18s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .match-card:hover { border-color: var(--border2); background: var(--surface2); }
+  .match-card.expanded { border-color: rgba(232,198,66,0.3); }
+  .match-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--surface3);
+    border-radius: 12px 0 0 12px;
+    transition: background .18s;
+  }
+  .match-card.expanded::before { background: var(--accent); }
+  .match-card.inauguracion::before { background: #e85d3a; }
+  .match-card.brasil-match::before { background: var(--br-green); }
+
+  .match-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .match-num {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    min-width: 30px;
+  }
+  .match-grupo {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--surface3);
+    color: var(--muted2);
+    border: 1px solid var(--border);
+  }
+  .match-equipos {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-width: 160px;
+  }
+  .match-nota-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+  .badge-inauguracion { background: rgba(232,93,58,0.15); color: #f0875e; border: 1px solid rgba(232,93,58,0.3); }
+  .badge-brasil { background: rgba(0,156,59,0.15); color: #4dd67a; border: 1px solid rgba(0,156,59,0.3); }
+
+  .match-bottom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .match-horarios {
+    display: flex;
+    gap: 16px;
+  }
+  .hora-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hora-flag { font-size: 14px; }
+  .hora-time { font-size: 14px; font-weight: 600; color: var(--text); }
+  .hora-label { font-size: 11px; color: var(--muted); }
+  .match-sede {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+    text-align: right;
+  }
+
+  /* EXPANDED CHANNELS */
+  .channels-panel {
+    display: none;
+    margin-top: 14px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .match-card.expanded .channels-panel { display: grid; }
+  @media (max-width: 600px) {
+    .channels-panel { grid-template-columns: 1fr; }
+  }
+
+  .country-channels { }
+  .country-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .cl-title { color: #e8404a; }
+  .br-title { color: #4dd67a; }
+
+  .ch-section { margin-bottom: 8px; }
+  .ch-section-label {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .ch-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ch-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid var(--border2);
+    color: var(--muted2);
+    background: var(--surface3);
+  }
+  .ch-tag.abierta { border-color: rgba(34,197,94,0.3); color: #4ade80; background: rgba(34,197,94,0.08); }
+  .ch-tag.pago { border-color: rgba(99,102,241,0.35); color: #a5b4fc; background: rgba(99,102,241,0.08); }
+  .ch-tag.yt { border-color: rgba(239,68,68,0.35); color: #f87171; background: rgba(239,68,68,0.08); }
+  .ch-tag.empty { color: var(--muted); font-style: italic; border-style: dashed; }
+
+  /* CHANNELS PAGE */
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .country-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .country-card-header {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .country-flag-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .flag-circle {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .country-name { font-size: 18px; font-weight: 600; }
+  .country-nota { font-size: 12px; color: var(--muted2); line-height: 1.5; }
+
+  .channel-group { padding: 14px 20px; border-bottom: 1px solid var(--border); }
+  .channel-group:last-child { border-bottom: none; }
+  .channel-group-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .channel-row {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 8px; padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .channel-row:last-child { border-bottom: none; }
+  .channel-row-name { font-weight: 500; color: var(--text); }
+  .channel-row-detail { font-size: 12px; color: var(--muted2); text-align: right; max-width: 55%; line-height: 1.4; }
+  .channel-row-url a { color: var(--accent); font-size: 11px; text-decoration: none; }
+  .channel-row-url a:hover { text-decoration: underline; }
+
+  /* RESUMEN / STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: var(--muted2);
+    margin-bottom: 16px;
+    margin-top: 28px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ELIM */
+  .elim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .elim-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .elim-fase {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .elim-dates { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .elim-channels { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .elim-country-block { }
+  .elim-country-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .elim-cl { color: #e8404a; }
+  .elim-br { color: #4dd67a; }
+  .elim-ch-list { display: flex; flex-direction: column; gap: 3px; }
+  .elim-ch-item { font-size: 11px; color: var(--muted2); }
+  .elim-sede { font-size: 11px; color: var(--muted); margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
+
+  /* JSON VIEWER */
+  .json-viewer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .json-toolbar {
+    display: flex; gap: 8px; align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .json-toolbar span { font-size: 12px; color: var(--muted); }
+  .copy-btn {
+    margin-left: auto;
+    background: var(--surface3);
+    border: 1px solid var(--border2);
+    color: var(--muted2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 500;
+    padding: 5px 14px; border-radius: 6px;
+    cursor: pointer; transition: all .18s;
+  }
+  .copy-btn:hover { color: var(--text); border-color: var(--accent); }
+  .json-pre {
+    padding: 16px;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow: auto;
+    max-height: 520px;
+    font-family: 'Courier New', monospace;
+    color: #a0aec0;
+  }
+  .json-pre .key { color: #81e6d9; }
+  .json-pre .string { color: #fbd38d; }
+  .json-pre .number { color: #90cdf4; }
+  .json-pre .bool { color: #fc8181; }
+
+  /* no matches */
+  .no-matches {
+    text-align: center;
+    padding: 40px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">⚽ Copa del Mundo</div>
+  <h1>MUNDIAL FIFA 2026</h1>
+  <p class="hero-sub">Fixture completo · Canales Chile y Brasil</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">📅 <span class="val">11 Jun – 19 Jul 2026</span></div>
+    <div class="hero-meta-item">🏟 <span class="val">EE.UU. · México · Canadá</span></div>
+    <div class="hero-meta-item">⚽ <span class="val">48 selecciones / 104 partidos</span></div>
+    <div class="hero-meta-item">🏆 <span class="val">Final: MetLife Stadium, NJ</span></div>
+  </div>
+</div>
+
+<div class="tabs container">
+  <button class="tab-btn active" onclick="switchTab('fixture')">Fixture</button>
+  <button class="tab-btn" onclick="switchTab('canales')">Canales</button>
+  <button class="tab-btn" onclick="switchTab('eliminatoria')">Eliminatoria</button>
+  <button class="tab-btn" onclick="switchTab('json')">JSON</button>
+</div>
+
+<div class="container">
+
+  <!-- FIXTURE TAB -->
+  <div id="tab-fixture" class="tab-panel active">
+    <div class="filter-bar">
+      <label>Grupo</label>
+      <button class="filter-btn active" onclick="filterGrupo('todos',this)">Todos</button>
+      <button class="filter-btn" onclick="filterGrupo('A',this)">A</button>
+      <button class="filter-btn" onclick="filterGrupo('B',this)">B</button>
+      <button class="filter-btn" onclick="filterGrupo('C',this)">C</button>
+      <button class="filter-btn" onclick="filterGrupo('D',this)">D</button>
+      <button class="filter-btn" onclick="filterGrupo('E',this)">E</button>
+      <button class="filter-btn" onclick="filterGrupo('F',this)">F</button>
+      <button class="filter-btn" onclick="filterGrupo('G',this)">G</button>
+      <button class="filter-btn" onclick="filterGrupo('H',this)">H</button>
+      <button class="filter-btn" onclick="filterGrupo('I',this)">I</button>
+      <button class="filter-btn" onclick="filterGrupo('J',this)">J</button>
+      <button class="filter-btn" onclick="filterGrupo('K',this)">K</button>
+      <button class="filter-btn" onclick="filterGrupo('L',this)">L</button>
+    </div>
+    <div class="filter-bar" style="margin-top:-12px;">
+      <label>Buscar</label>
+      <input class="search-input" type="text" id="search-input" placeholder="equipo, sede..." oninput="filterSearch(this.value)">
+    </div>
+    <div id="fixture-container"></div>
+  </div>
+
+  <!-- CANALES TAB -->
+  <div id="tab-canales" class="tab-panel">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-num">104</div><div class="stat-label">Partidos totales</div></div>
+      <div class="stat-card"><div class="stat-num">52</div><div class="stat-label">CHV (Chile)</div></div>
+      <div class="stat-card"><div class="stat-num">52</div><div class="stat-label">TV Globo (BR)</div></div>
+      <div class="stat-card"><div class="stat-num">104</div><div class="stat-label">CazéTV YouTube (BR)</div></div>
+      <div class="stat-card"><div class="stat-num">30</div><div class="stat-label">Disney+ (Chile)</div></div>
+    </div>
+    <div id="canales-container"></div>
+  </div>
+
+  <!-- ELIMINATORIA TAB -->
+  <div id="tab-eliminatoria" class="tab-panel">
+    <div id="elim-container"></div>
+  </div>
+
+  <!-- JSON TAB -->
+  <div id="tab-json" class="tab-panel">
+    <div class="json-viewer">
+      <div class="json-toolbar">
+        <span>mundial_2026_fixture_canales.json</span>
+        <button class="copy-btn" onclick="copyJSON()">Copiar JSON</button>
+      </div>
+      <pre class="json-pre" id="json-display"></pre>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Fuentes: ESPN Deportes · El Mostrador · Redgol · tvenserio.com · Goal.com · FIFA oficial — Datos al 30 mayo 2026
+</div>
+
+<script>
+const DATA = {
+  "torneo": {
+    "nombre": "Copa Mundial de la FIFA 2026",
+    "edicion": 23,
+    "formato": "48 selecciones / 104 partidos",
+    "fecha_inicio": "2026-06-11",
+    "fecha_final": "2026-07-19",
+    "sedes": ["Estados Unidos", "México", "Canadá"],
+    "partido_inaugural": "México vs. Sudáfrica — Estadio Azteca, Ciudad de México",
+    "partido_final": "MetLife Stadium, East Rutherford, Nueva Jersey"
+  },
+  "canales_por_pais": {
+    "Chile": {
+      "nota": "Chilevisión tiene los derechos exclusivos de TV abierta. Transmitirá ~52 partidos, incluyendo inauguración, semifinales y final. DSports (DirecTV) transmite los 104 partidos.",
+      "television_abierta": [
+        { "canal": "Chilevisión (CHV)", "tipo": "abierta", "partidos": "~52 partidos seleccionados (inauguración, semifinales, final y partidos destacados)", "streaming_gratuito": "MiCHV (app) y Chilevision.cl", "resolucion": "HD / 4K HDR via ClaroVTR (canal 557) y VTR (canal 710)" }
+      ],
+      "television_pago": [
+        { "canal": "DSports (DirecTV Sports)", "tipo": "cable/satélite", "partidos": "104 partidos (cobertura completa)", "plataforma_streaming": "DGO (app y web)" },
+        { "canal": "Disney+ Premium (ESPN)", "tipo": "streaming de pago", "partidos": "~30 partidos seleccionados" },
+        { "canal": "Claro TV (canal 557)", "tipo": "cable", "partidos": "Señal 4K HDR via alianza con Chilevisión", "nota": "Sin costo adicional para suscriptores compatibles" },
+        { "canal": "VTR (canal 710)", "tipo": "cable", "partidos": "Señal 4K HDR via alianza con Chilevisión", "nota": "Requiere dispositivo dbox smart" }
+      ],
+      "youtube": [
+        { "canal": "Chilevisión YouTube", "url": "https://www.youtube.com/@chilevision", "contenido": "Resúmenes, highlights y contenido complementario. Acuerdo FIFA-YouTube para primeros 10 min (Chile pendiente).", "nota": "Sin transmisión EN VIVO confirmada de partidos completos" }
+      ]
+    },
+    "Brasil": {
+      "nota": "Brasil tiene la cobertura más amplia de Latinoamérica. CazéTV transmitirá los 104 partidos GRATIS en YouTube. TV Globo emitirá 52 encuentros incluyendo todos los de Brasil y la final.",
+      "television_abierta": [
+        { "canal": "TV Globo", "tipo": "abierta", "partidos": "52 partidos (todos los de Brasil, la final y seleccionados)", "resolucion": "HD (sin 4K en abierta)", "nota": "Primera vez que Globo no transmite todos los partidos del Mundial" },
+        { "canal": "SBT", "tipo": "abierta", "partidos": "Partidos seleccionados (alianza con N Sports)", "nota": "Acuerdo anunciado sep 2025" }
+      ],
+      "television_pago": [
+        { "canal": "SporTV (Grupo Globo)", "tipo": "cable — canal deportivo", "partidos": "55 partidos en 4K via Globoplay", "plataforma_streaming": "Globoplay (app y web)" },
+        { "canal": "GE TV (Globo)", "tipo": "streaming", "partidos": "Partidos del Grupo Globo, sin 4K" },
+        { "canal": "N Sports (NSports)", "tipo": "cable", "partidos": "Partidos seleccionados con SBT" }
+      ],
+      "youtube": [
+        { "canal": "CazéTV", "url": "https://www.youtube.com/@CazeTV", "tipo": "YouTube — GRATUITO", "partidos": "104 partidos EN VIVO — cobertura completa", "resolucion": "4K (primera transmisión 4K gratuita del Mundial en YouTube)", "conductor": "Casimiro Miguel", "nota": "Solo disponible para territorio brasileño. Récord: 6M dispositivos simultáneos en Qatar 2022." }
+      ]
+    }
+  },
+  "fixture": {
+    "fase_grupos": [
+      { "fecha": "2026-06-11", "dia": "Jueves", "partidos": [
+        { "numero": 1, "partido": "México vs. Sudáfrica", "grupo": "A", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Estadio Azteca, Ciudad de México", "nota": "Partido inaugural", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resumen)"] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV","GE TV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 2, "partido": "Corea del Sur vs. República Checa", "grupo": "A", "hora_chile": "22:00", "hora_brasil": "23:00", "sede": "Estadio Akron, Guadalajara", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resumen)"] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV","GE TV","N Sports"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-12", "dia": "Viernes", "partidos": [
+        { "numero": 3, "partido": "Canadá vs. Bosnia y Herzegovina", "grupo": "B", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "BMO Field, Toronto", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO"], "youtube": ["Chilevisión YouTube (resumen)"] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","GE TV","N Sports"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 4, "partido": "Estados Unidos vs. Paraguay", "grupo": "D", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "SoFi Stadium, Los Ángeles", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resumen)"] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV","GE TV"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-13", "dia": "Sábado", "partidos": [
+        { "numero": 5, "partido": "Qatar vs. Suiza", "grupo": "B", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Levi's Stadium, San Francisco", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 6, "partido": "Brasil vs. Marruecos", "grupo": "C", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "MetLife Stadium, Nueva Jersey", "nota": "Partido de Brasil", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV","Globoplay (4K)"], "youtube": ["CazéTV (en vivo, 4K)"] } },
+        { "numero": 7, "partido": "Haití vs. Escocia", "grupo": "C", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "Gillette Stadium, Boston", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 8, "partido": "Australia vs. Turquía", "grupo": "D", "hora_chile": "00:00 (+1)", "hora_brasil": "01:00 (+1)", "sede": "BC Place, Vancouver", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": [], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-14", "dia": "Domingo", "partidos": [
+        { "numero": 9, "partido": "Alemania vs. Curazao", "grupo": "E", "hora_chile": "13:00", "hora_brasil": "14:00", "sede": "NRG Stadium, Houston", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV","GE TV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 10, "partido": "Países Bajos vs. Japón", "grupo": "F", "hora_chile": "16:00", "hora_brasil": "17:00", "sede": "AT&T Stadium, Dallas", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV","GE TV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 11, "partido": "Costa de Marfil vs. Ecuador", "grupo": "E", "hora_chile": "19:00", "hora_brasil": "20:00", "sede": "Lincoln Financial Field, Philadelphia", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV","GE TV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 12, "partido": "Suecia vs. Túnez", "grupo": "F", "hora_chile": "22:00", "hora_brasil": "23:00", "sede": "Estadio BBVA, Monterrey", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-15", "dia": "Lunes", "partidos": [
+        { "numero": 13, "partido": "España vs. Cabo Verde", "grupo": "H", "hora_chile": "12:00", "hora_brasil": "13:00", "sede": "Mercedes-Benz Stadium, Atlanta", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 14, "partido": "Bélgica vs. Egipto", "grupo": "G", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Lumen Field, Seattle", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 15, "partido": "Arabia Saudita vs. Uruguay", "grupo": "H", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "Hard Rock Stadium, Miami", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 16, "partido": "Irán vs. Nueva Zelanda", "grupo": "G", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "SoFi Stadium, Los Ángeles", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-16", "dia": "Martes", "partidos": [
+        { "numero": 17, "partido": "Francia vs. Senegal", "grupo": "I", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "MetLife Stadium, Nueva Jersey", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 18, "partido": "Irak vs. Noruega", "grupo": "I", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "Gillette Stadium, Boston", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 19, "partido": "Argentina vs. Argelia", "grupo": "J", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "Arrowhead Stadium, Kansas City", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 20, "partido": "Austria vs. Jordania", "grupo": "J", "hora_chile": "00:00 (+1)", "hora_brasil": "01:00 (+1)", "sede": "Levi's Stadium, San Francisco", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": [], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-17", "dia": "Miércoles", "partidos": [
+        { "numero": 21, "partido": "Portugal vs. RD de Congo", "grupo": "K", "hora_chile": "13:00", "hora_brasil": "14:00", "sede": "NRG Stadium, Houston", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 22, "partido": "Inglaterra vs. Croacia", "grupo": "L", "hora_chile": "16:00", "hora_brasil": "17:00", "sede": "AT&T Stadium, Dallas", "nota": "", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 23, "partido": "Ghana vs. Panamá", "grupo": "L", "hora_chile": "19:00", "hora_brasil": "20:00", "sede": "BMO Field, Toronto", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["SBT"], "pago": ["SporTV","N Sports"], "youtube": ["CazéTV (en vivo)"] } },
+        { "numero": 24, "partido": "Uzbekistán vs. Colombia", "grupo": "K", "hora_chile": "22:00", "hora_brasil": "23:00", "sede": "Estadio Azteca, Ciudad de México", "nota": "", "canales_chile": { "abierta": [], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } }
+      ]},
+      { "fecha": "2026-06-18", "dia": "Jueves", "partidos": [
+        { "numero": 25, "partido": "República Checa vs. Sudáfrica", "grupo": "A", "hora_chile": "12:00", "hora_brasil": "13:00", "sede": "Mercedes-Benz Stadium, Atlanta", "nota": "" },
+        { "numero": 26, "partido": "Suiza vs. Bosnia y Herzegovina", "grupo": "B", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "SoFi Stadium, Los Ángeles", "nota": "" },
+        { "numero": 27, "partido": "Canadá vs. Qatar", "grupo": "B", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "BC Place, Vancouver", "nota": "" },
+        { "numero": 28, "partido": "México vs. Corea del Sur", "grupo": "A", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "Estadio Akron, Guadalajara", "nota": "" }
+      ]},
+      { "fecha": "2026-06-19", "dia": "Viernes", "partidos": [
+        { "numero": 29, "partido": "Estados Unidos vs. Australia", "grupo": "D", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Lumen Field, Seattle", "nota": "" },
+        { "numero": 30, "partido": "Escocia vs. Marruecos", "grupo": "C", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "Gillette Stadium, Boston", "nota": "" },
+        { "numero": 31, "partido": "Brasil vs. Haití", "grupo": "C", "hora_chile": "20:30", "hora_brasil": "21:30", "sede": "Lincoln Financial Field, Philadelphia", "nota": "Partido de Brasil" },
+        { "numero": 32, "partido": "Turquía vs. Paraguay", "grupo": "D", "hora_chile": "23:00", "hora_brasil": "00:00 (+1)", "sede": "Levi's Stadium, San Francisco", "nota": "" }
+      ]},
+      { "fecha": "2026-06-20", "dia": "Sábado", "partidos": [
+        { "numero": 33, "partido": "Países Bajos vs. Suecia", "grupo": "F", "hora_chile": "13:00", "hora_brasil": "14:00", "sede": "NRG Stadium, Houston", "nota": "" },
+        { "numero": 34, "partido": "Alemania vs. Costa de Marfil", "grupo": "E", "hora_chile": "16:00", "hora_brasil": "17:00", "sede": "BMO Field, Toronto", "nota": "" },
+        { "numero": 35, "partido": "Ecuador vs. Curazao", "grupo": "E", "hora_chile": "22:00", "hora_brasil": "23:00", "sede": "Arrowhead Stadium, Kansas City", "nota": "" },
+        { "numero": 36, "partido": "Túnez vs. Japón", "grupo": "F", "hora_chile": "00:00 (+1)", "hora_brasil": "01:00 (+1)", "sede": "Estadio BBVA, Monterrey", "nota": "" }
+      ]},
+      { "fecha": "2026-06-21", "dia": "Domingo", "partidos": [
+        { "numero": 37, "partido": "España vs. Arabia Saudita", "grupo": "H", "hora_chile": "12:00", "hora_brasil": "13:00", "sede": "Mercedes-Benz Stadium, Atlanta", "nota": "" },
+        { "numero": 38, "partido": "Bélgica vs. Irán", "grupo": "G", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "SoFi Stadium, Los Ángeles", "nota": "" },
+        { "numero": 39, "partido": "Uruguay vs. Cabo Verde", "grupo": "H", "hora_chile": "18:00", "hora_brasil": "19:00", "sede": "Hard Rock Stadium, Miami", "nota": "" },
+        { "numero": 40, "partido": "Nueva Zelanda vs. Egipto", "grupo": "G", "hora_chile": "21:00", "hora_brasil": "22:00", "sede": "BC Place, Vancouver", "nota": "" }
+      ]},
+      { "fecha": "2026-06-22", "dia": "Lunes", "partidos": [
+        { "numero": 41, "partido": "Argentina vs. Austria", "grupo": "J", "hora_chile": "13:00", "hora_brasil": "14:00", "sede": "AT&T Stadium, Dallas", "nota": "" },
+        { "numero": 42, "partido": "Francia vs. Irak", "grupo": "I", "hora_chile": "17:00", "hora_brasil": "18:00", "sede": "Lincoln Financial Field, Philadelphia", "nota": "" },
+        { "numero": 43, "partido": "Noruega vs. Senegal", "grupo": "I", "hora_chile": "20:00", "hora_brasil": "21:00", "sede": "MetLife Stadium, Nueva Jersey", "nota": "" },
+        { "numero": 44, "partido": "Jordania vs. Argelia", "grupo": "J", "hora_chile": "23:00", "hora_brasil": "00:00 (+1)", "sede": "Levi's Stadium, San Francisco", "nota": "" }
+      ]},
+      { "fecha": "2026-06-23", "dia": "Martes", "partidos": [
+        { "numero": 45, "partido": "Portugal vs. Uzbekistán", "grupo": "K", "hora_chile": "13:00", "hora_brasil": "14:00", "sede": "NRG Stadium, Houston", "nota": "" },
+        { "numero": 46, "partido": "Inglaterra vs. Ghana", "grupo": "L", "hora_chile": "16:00", "hora_brasil": "17:00", "sede": "Gillette Stadium, Boston", "nota": "" },
+        { "numero": 47, "partido": "Panamá vs. Croacia", "grupo": "L", "hora_chile": "19:00", "hora_brasil": "20:00", "sede": "BMO Field, Toronto", "nota": "" },
+        { "numero": 48, "partido": "Colombia vs. RD de Congo", "grupo": "K", "hora_chile": "22:00", "hora_brasil": "23:00", "sede": "Estadio Akron, Guadalajara", "nota": "" }
+      ]},
+      { "fecha": "2026-06-24", "dia": "Miércoles", "partidos": [
+        { "numero": 49, "partido": "Suiza vs. Canadá", "grupo": "B", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "BC Place, Vancouver", "nota": "J3 simultáneos" },
+        { "numero": 50, "partido": "Bosnia y Herzegovina vs. Qatar", "grupo": "B", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Levi's Stadium, San Francisco", "nota": "J3 simultáneos" },
+        { "numero": 51, "partido": "Marruecos vs. Haití", "grupo": "C", "hora_chile": "20:00", "hora_brasil": "21:00", "sede": "NRG Stadium, Houston", "nota": "J3 simultáneos" },
+        { "numero": 52, "partido": "Brasil vs. Escocia", "grupo": "C", "hora_chile": "20:00", "hora_brasil": "21:00", "sede": "MetLife Stadium, Nueva Jersey", "nota": "Partido de Brasil — J3 simultáneos" }
+      ]},
+      { "fecha": "2026-06-25", "dia": "Jueves", "partidos": [
+        { "numero": 53, "partido": "México vs. República Checa", "grupo": "A", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Estadio Azteca, Ciudad de México", "nota": "J3 simultáneos" },
+        { "numero": 54, "partido": "Sudáfrica vs. Corea del Sur", "grupo": "A", "hora_chile": "15:00", "hora_brasil": "16:00", "sede": "Estadio Akron, Guadalajara", "nota": "J3 simultáneos" },
+        { "numero": 55, "partido": "Paraguay vs. Australia", "grupo": "D", "hora_chile": "20:00", "hora_brasil": "21:00", "sede": "AT&T Stadium, Dallas", "nota": "J3 simultáneos" },
+        { "numero": 56, "partido": "Turquía vs. Estados Unidos", "grupo": "D", "hora_chile": "20:00", "hora_brasil": "21:00", "sede": "Lumen Field, Seattle", "nota": "J3 simultáneos" }
+      ]}
+    ],
+    "fase_eliminatoria": {
+      "dieciseisavos_de_final": { "fecha_inicio": "2026-07-01", "fecha_fin": "2026-07-05", "total_partidos": 16, "nota": "32 equipos: 1°, 2° de cada grupo y 8 mejores 3°", "canales_chile": { "abierta": ["Chilevisión (seleccionados)"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resúmenes)"] }, "canales_brasil": { "abierta": ["TV Globo (si juega Brasil)","SBT"], "pago": ["SporTV","Globoplay (4K)","N Sports"], "youtube": ["CazéTV (en vivo, todos)"] } },
+      "octavos_de_final": { "fecha_inicio": "2026-07-07", "fecha_fin": "2026-07-10", "total_partidos": 8, "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resúmenes)"] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV","Globoplay (4K)","N Sports"], "youtube": ["CazéTV (en vivo, todos)"] } },
+      "cuartos_de_final": { "fecha_inicio": "2026-07-11", "fecha_fin": "2026-07-12", "total_partidos": 4, "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resúmenes)"] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV","Globoplay (4K)"], "youtube": ["CazéTV (en vivo, 4K)"] } },
+      "semifinales": { "fecha": "2026-07-14 y 2026-07-15", "total_partidos": 2, "sedes": ["Mercedes-Benz Stadium, Atlanta","AT&T Stadium, Dallas"], "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube"] }, "canales_brasil": { "abierta": ["TV Globo"], "pago": ["SporTV","Globoplay (4K)"], "youtube": ["CazéTV (en vivo, 4K)"] } },
+      "tercer_puesto": { "fecha": "2026-07-18", "sede": "Hard Rock Stadium, Miami", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO"], "youtube": [] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV"], "youtube": ["CazéTV (en vivo)"] } },
+      "final": { "fecha": "2026-07-19", "hora_chile": "~16:00", "hora_brasil": "~17:00", "sede": "MetLife Stadium, East Rutherford, Nueva Jersey", "canales_chile": { "abierta": ["Chilevisión"], "pago": ["DSports/DirecTV","DGO","Disney+"], "youtube": ["Chilevisión YouTube (resumen)"] }, "canales_brasil": { "abierta": ["TV Globo","SBT"], "pago": ["SporTV","Globoplay (4K)","N Sports"], "youtube": ["CazéTV (en vivo, 4K)"] } }
+    }
+  }
+};
+
+let currentGrupo = 'todos';
+let currentSearch = '';
+
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function filterGrupo(g, btn) {
+  currentGrupo = g;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFixture();
+}
+
+function filterSearch(val) {
+  currentSearch = val.toLowerCase();
+  renderFixture();
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('expanded');
+}
+
+function renderFixture() {
+  const container = document.getElementById('fixture-container');
+  const jornadas = DATA.fixture.fase_grupos;
+  let html = '';
+  let totalShown = 0;
+
+  jornadas.forEach(jornada => {
+    if (!jornada.partidos) return;
+
+    const filtered = jornada.partidos.filter(p => {
+      const grupoOk = currentGrupo === 'todos' || p.grupo === currentGrupo;
+      const searchOk = !currentSearch ||
+        p.partido.toLowerCase().includes(currentSearch) ||
+        (p.sede||'').toLowerCase().includes(currentSearch) ||
+        (p.grupo||'').toLowerCase().includes(currentSearch);
+      return grupoOk && searchOk;
+    });
+
+    if (filtered.length === 0) return;
+    totalShown += filtered.length;
+
+    const d = new Date(jornada.fecha + 'T12:00:00');
+    const fechaStr = d.toLocaleDateString('es-CL', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    html += `<div class="date-section">
+      <div class="date-header" onclick="toggleDateSection(this)">
+        <span class="dia">${jornada.dia}</span>
+        <span class="fecha-full">${fechaStr}</span>
+        <span class="match-count">${filtered.length} partido${filtered.length !== 1 ? 's' : ''}</span>
+      </div>
+      <div class="matches-grid">`;
+
+    filtered.forEach(p => {
+      const isBrasil = (p.nota||'').toLowerCase().includes('brasil');
+      const isInaugural = (p.nota||'').toLowerCase().includes('inaugural');
+      const cardId = 'card-' + p.numero;
+      const extraClass = isInaugural ? ' inauguracion' : (isBrasil ? ' brasil-match' : '');
+
+      let notaBadge = '';
+      if (isInaugural) notaBadge = `<span class="match-nota-badge badge-inauguracion">⭐ Inaugural</span>`;
+      else if (isBrasil) notaBadge = `<span class="match-nota-badge badge-brasil">🇧🇷 Brasil</span>`;
+      else if ((p.nota||'').includes('J3')) notaBadge = `<span class="match-nota-badge" style="background:rgba(99,102,241,.12);color:#a5b4fc;border:1px solid rgba(99,102,241,.3)">Simultáneo</span>`;
+
+      const ch_cl = p.canales_chile || {};
+      const ch_br = p.canales_brasil || {};
+
+      const hasChannels = Object.keys(ch_cl).length > 0 || Object.keys(ch_br).length > 0;
+
+      let channelsHtml = '';
+      if (hasChannels) {
+        const renderTags = (arr, cls) => arr && arr.length
+          ? arr.map(c => `<span class="ch-tag ${cls}">${c}</span>`).join('')
+          : `<span class="ch-tag empty">—</span>`;
+
+        channelsHtml = `<div class="channels-panel">
+          <div class="country-channels">
+            <div class="country-title cl-title">🇨🇱 Chile</div>
+            ${ch_cl.abierta !== undefined ? `<div class="ch-section"><div class="ch-section-label">Abierta</div><div class="ch-tags">${renderTags(ch_cl.abierta,'abierta')}</div></div>` : ''}
+            ${ch_cl.pago !== undefined ? `<div class="ch-section"><div class="ch-section-label">Pago</div><div class="ch-tags">${renderTags(ch_cl.pago,'pago')}</div></div>` : ''}
+            ${ch_cl.youtube !== undefined ? `<div class="ch-section"><div class="ch-section-label">YouTube</div><div class="ch-tags">${renderTags(ch_cl.youtube,'yt')}</div></div>` : ''}
+          </div>
+          <div class="country-channels">
+            <div class="country-title br-title">🇧🇷 Brasil</div>
+            ${ch_br.abierta !== undefined ? `<div class="ch-section"><div class="ch-section-label">Abierta</div><div class="ch-tags">${renderTags(ch_br.abierta,'abierta')}</div></div>` : ''}
+            ${ch_br.pago !== undefined ? `<div class="ch-section"><div class="ch-section-label">Pago</div><div class="ch-tags">${renderTags(ch_br.pago,'pago')}</div></div>` : ''}
+            ${ch_br.youtube !== undefined ? `<div class="ch-section"><div class="ch-section-label">YouTube</div><div class="ch-tags">${renderTags(ch_br.youtube,'yt')}</div></div>` : ''}
+          </div>
+        </div>`;
+      }
+
+      html += `<div class="match-card${extraClass}" id="${cardId}" onclick="toggleCard('${cardId}')">
+        <div class="match-top">
+          <span class="match-num">#${p.numero}</span>
+          <span class="match-grupo">Grupo ${p.grupo}</span>
+          <span class="match-equipos">${p.partido}</span>
+          ${notaBadge}
+        </div>
+        <div class="match-bottom">
+          <div class="match-horarios">
+            <div class="hora-item">
+              <span class="hora-flag">🇨🇱</span>
+              <span class="hora-time">${p.hora_chile}</span>
+              <span class="hora-label">Chile</span>
+            </div>
+            <div class="hora-item">
+              <span class="hora-flag">🇧🇷</span>
+              <span class="hora-time">${p.hora_brasil}</span>
+              <span class="hora-label">Brasil</span>
+            </div>
+          </div>
+          <div class="match-sede">${p.sede}</div>
+        </div>
+        ${channelsHtml}
+      </div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  if (totalShown === 0) {
+    html = `<div class="no-matches">Sin resultados para tu búsqueda. Intenta con otro equipo o grupo.</div>`;
+  }
+
+  container.innerHTML = html;
+}
+
+function toggleDateSection(header) {
+  const grid = header.nextElementSibling;
+  grid.style.display = grid.style.display === 'none' ? 'grid' : 'none';
+}
+
+function renderCanales() {
+  const c = DATA.canales_por_pais;
+  let html = '';
+
+  ['Chile', 'Brasil'].forEach(pais => {
+    const data = c[pais];
+    const flag = pais === 'Chile' ? '🇨🇱' : '🇧🇷';
+    const bgColor = pais === 'Chile' ? 'rgba(232,64,74,0.08)' : 'rgba(0,156,59,0.08)';
+    const borderColor = pais === 'Chile' ? 'rgba(232,64,74,0.25)' : 'rgba(0,156,59,0.25)';
+    const textColor = pais === 'Chile' ? '#e8404a' : '#4dd67a';
+
+    html += `<div class="country-card" style="border-color: ${borderColor};">
+      <div class="country-card-header" style="background: ${bgColor};">
+        <div class="country-flag-title">
+          <div class="flag-circle" style="background: ${bgColor}; border: 1px solid ${borderColor}; font-size:20px;">${flag}</div>
+          <span class="country-name" style="color: ${textColor};">${pais}</span>
+        </div>
+        <p class="country-nota">${data.nota}</p>
+      </div>`;
+
+    // Abierta
+    html += `<div class="channel-group">
+      <div class="channel-group-label" style="color: #4ade80;">📡 Televisión Abierta</div>`;
+    data.television_abierta.forEach(ch => {
+      html += `<div class="channel-row">
+        <div>
+          <div class="channel-row-name">${ch.canal}</div>
+        </div>
+        <div class="channel-row-detail">${ch.partidos}</div>
+      </div>`;
+    });
+    html += `</div>`;
+
+    // Pago
+    html += `<div class="channel-group">
+      <div class="channel-group-label" style="color: #a5b4fc;">💳 Televisión de Pago</div>`;
+    data.television_pago.forEach(ch => {
+      html += `<div class="channel-row">
+        <div>
+          <div class="channel-row-name">${ch.canal}</div>
+          <div style="font-size:11px;color:var(--muted);">${ch.tipo}</div>
+        </div>
+        <div class="channel-row-detail">${ch.partidos}</div>
+      </div>`;
+    });
+    html += `</div>`;
+
+    // YouTube
+    html += `<div class="channel-group">
+      <div class="channel-group-label" style="color: #f87171;">▶ YouTube / Streaming</div>`;
+    data.youtube.forEach(ch => {
+      html += `<div class="channel-row">
+        <div>
+          <div class="channel-row-name">${ch.canal}</div>
+          ${ch.url ? `<div class="channel-row-url"><a href="${ch.url}" target="_blank">${ch.url.replace('https://','')}</a></div>` : ''}
+        </div>
+        <div class="channel-row-detail">${ch.partidos || ch.contenido || ''}</div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  document.getElementById('canales-container').innerHTML = `<div class="channels-grid">${html}</div>`;
+}
+
+function renderEliminatoria() {
+  const elim = DATA.fixture.fase_eliminatoria;
+  const fases = [
+    { key: 'dieciseisavos_de_final', label: '16avos de Final', icon: '🔵' },
+    { key: 'octavos_de_final', label: 'Octavos de Final', icon: '🟢' },
+    { key: 'cuartos_de_final', label: 'Cuartos de Final', icon: '🟡' },
+    { key: 'semifinales', label: 'Semifinales', icon: '🟠' },
+    { key: 'tercer_puesto', label: 'Tercer Puesto', icon: '🥉' },
+    { key: 'final', label: 'GRAN FINAL', icon: '🏆' }
+  ];
+
+  let html = `<div class="section-title">Fases Eliminatorias — Canales por Fase</div><div class="elim-grid">`;
+
+  fases.forEach(f => {
+    const fase = elim[f.key];
+    if (!fase) return;
+
+    const fechaStr = fase.fecha || (fase.fecha_inicio ? `${fase.fecha_inicio}${fase.fecha_fin ? ' → ' + fase.fecha_fin : ''}` : '');
+    const partidos = fase.total_partidos ? `${fase.total_partidos} partido${fase.total_partidos > 1 ? 's' : ''}` : '';
+    const sede = fase.sede || (fase.sedes ? fase.sedes.join(' · ') : '');
+
+    const renderChList = (list) => list ? list.map(c => `<div class="elim-ch-item">• ${c}</div>`).join('') : '';
+
+    html += `<div class="elim-card" ${f.key === 'final' ? 'style="border-color:rgba(232,198,66,0.4);background:rgba(232,198,66,0.04);"' : ''}>
+      <div class="elim-fase">${f.icon} ${f.label}</div>
+      <div class="elim-dates">${fechaStr}${partidos ? ' · ' + partidos : ''}</div>
+      <div class="elim-channels">
+        <div class="elim-country-block">
+          <div class="elim-country-label elim-cl">🇨🇱 Chile</div>
+          <div class="elim-ch-list">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:2px;">Abierta</div>
+            ${renderChList(fase.canales_chile && fase.canales_chile.abierta)}
+            <div style="font-size:10px;color:var(--muted);margin-top:5px;margin-bottom:2px;">Pago</div>
+            ${renderChList(fase.canales_chile && fase.canales_chile.pago)}
+          </div>
+        </div>
+        <div class="elim-country-block">
+          <div class="elim-country-label elim-br">🇧🇷 Brasil</div>
+          <div class="elim-ch-list">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:2px;">Abierta</div>
+            ${renderChList(fase.canales_brasil && fase.canales_brasil.abierta)}
+            <div style="font-size:10px;color:var(--muted);margin-top:5px;margin-bottom:2px;">YouTube</div>
+            ${renderChList(fase.canales_brasil && fase.canales_brasil.youtube)}
+          </div>
+        </div>
+      </div>
+      ${sede ? `<div class="elim-sede">📍 ${sede}</div>` : ''}
+    </div>`;
+  });
+
+  html += '</div>';
+  document.getElementById('elim-container').innerHTML = html;
+}
+
+function renderJSON() {
+  const raw = JSON.stringify(DATA, null, 2);
+  const highlighted = raw
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"([^"]+)":/g, '<span class="key">"$1"</span>:')
+    .replace(/: "([^"]*)"/g, ': <span class="string">"$1"</span>')
+    .replace(/: (\d+)/g, ': <span class="number">$1</span>')
+    .replace(/: (true|false)/g, ': <span class="bool">$1</span>');
+  document.getElementById('json-display').innerHTML = highlighted;
+}
+
+function copyJSON() {
+  navigator.clipboard.writeText(JSON.stringify(DATA, null, 2));
+  const btn = event.target;
+  btn.textContent = '✓ Copiado';
+  setTimeout(() => btn.textContent = 'Copiar JSON', 2000);
+}
+
+renderFixture();
+renderCanales();
+renderEliminatoria();
+renderJSON();
+</script>
+</body>
+</html>
