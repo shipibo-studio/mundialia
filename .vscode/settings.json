@@ -1,5 +1,9 @@
 {
   "chat.tools.terminal.autoApprove": {
-    "npx next": true
+    "npx next": true,
+    "npm install": true,
+    "pnpm": true,
+    "npx headroom": true,
+    "rtk": true
   }
 }

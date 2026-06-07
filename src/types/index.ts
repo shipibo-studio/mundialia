@@ -106,3 +106,37 @@ export interface MundialData {
   fuentes?: string[];
   notas_generales?: string[];
 }
+
+// ─── NeonDB / Auth ────────────────────────────────────
+
+export interface User {
+  id: string;
+  email: string;
+  password_hash: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UserPublic {
+  id: string;
+  email: string;
+  created_at: string;
+}
+
+export interface Notification {
+  id: string;
+  user_id: string;
+  partido_numero: number;
+  tipo_notificacion: string;
+  activa: boolean;
+  created_at: string;
+  updated_at: string;
+  // joined fields
+  partido_nombre?: string;
+  hora_chile?: string;
+  grupo?: string;
+}
+
+export interface NotificationWithEmail extends Notification {
+  email: string;
+}

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { MobileNav } from "@/components/mobile-nav";
 
@@ -44,10 +43,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background text-on-surface selection:bg-primary selection:text-on-primary">
-        <Header />
-        <main className="pt-28 pb-12 md:pb-4 px-gutter max-w-container-max mx-auto overflow-x-hidden">
-          {children}
-        </main>
+        {children}
         <Footer />
         <MobileNav />
       </body>
