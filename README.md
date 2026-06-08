@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚽ MundialIA 2026
 
-## Getting Started
+> **No te pierdas ni un partido del Mundial 2026.**  
+> Fixture interactivo, canales TV/streaming, notificaciones por correo y resumen diario.
 
-First, run the development server:
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16-black?style=flat&logo=next.js" alt="Next.js 16"/>
+  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=flat&logo=tailwindcss" alt="Tailwind v4"/>
+  <img src="https://img.shields.io/badge/NeonDB-Serverless-00E59B?style=flat&logo=neon" alt="NeonDB"/>
+  <img src="https://img.shields.io/badge/Resend-Email-000000?style=flat&logo=resend" alt="Resend"/>
+  <img src="https://img.shields.io/badge/Hosted-Vercel-000000?style=flat&logo=vercel" alt="Vercel"/>
+</p>
+
+---
+
+## ✨ Features
+
+| | |
+|---|---|
+| 🗓️ **Fixture completo** | 104 partidos, fase de grupos + eliminatorias, con hora Chile y Brasil |
+| 📺 **Canales TV & Streaming** | Cobertura Chile (CHV, DSports, Disney+) y Brasil (Globo, CazéTV, SporTV) |
+| 🔔 **Notificaciones por correo** | Suscríbete a partidos específicos y recibe recordatorios |
+| 📋 **Resumen diario** | Cron a las 8:00 AM GMT-4 con los partidos del día y sus canales |
+| 🔐 **Autenticación** | Login/registro con NeonDB + JWT |
+| 🌙 **Diseño dark neon** | Interfaz oscura con acentos cyan, verde, rojo y fucsia |
+
+---
+
+## 🛠️ Stack
+
+| Capa | Tecnología |
+|---|---|
+| Framework | Next.js 16 (Turbopack) |
+| Estilos | Tailwind CSS v4 + `tw-animate-css` |
+| Fuentes | Sora (headings) · Plus Jakarta Sans (body) |
+| Base de datos | NeonDB (serverless Postgres) |
+| Email | Resend |
+| Autenticación | JWT (jose) + bcryptjs |
+| Hosting | Vercel (con Cron Jobs) |
+
+---
+
+## 🚀 Desarrollo local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# 1. Clonar e instalar
+pnpm install
+
+# 2. Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales (NeonDB, Resend, etc.)
+
+# 3. Correr migraciones en Neon Console
+#    migrations/001_create_users.sql
+#    migrations/002_create_notifications.sql
+
+# 4. Iniciar dev
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000) 🚀
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Estructura
 
-## Learn More
+```
+src/
+├── app/
+│   ├── page.tsx            # Login
+│   ├── register/           # Registro
+│   ├── logout/             # Logout
+│   ├── app/                # Área protegida (requiere login)
+│   │   ├── page.tsx        # Fixture
+│   │   ├── canales/        # Canales TV
+│   │   └── configuracion/  # Configuración
+│   ├── api/
+│   │   ├── auth/           # API de autenticación
+│   │   └── cron/           # Cron job (resumen diario)
+│   └── actions/            # Server Actions
+├── components/
+│   ├── match-card.tsx      # Card de partido con checkbox suscripción
+│   ├── header.tsx          # Header con navegación
+│   └── ui/                 # Componentes reutilizables (toast)
+├── lib/
+│   ├── db.ts               # Conexión NeonDB
+│   ├── auth.ts             # JWT, sesión, passwords
+│   ├── email.ts            # Servicio de emails (Resend)
+│   ├── queries.ts          # Queries SQL
+│   ├── data.ts             # Fixture del Mundial 2026
+│   └── canales.ts          # Registro central de canales
+├── types/                  # TypeScript interfaces
+├── proxy.ts                # Protección de rutas /app/*
+└── middleware.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🕐 Cron diario
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A las **8:00 AM GMT-4** (0 12 * * * UTC), un cron revisa los partidos del día y envía un email digest a cada usuario con los partidos que tiene suscritos, incluyendo:
 
-## Deploy on Vercel
+- ⚽ Nombre del partido y grupo
+- 🇨🇱🇧🇷 Horarios Chile y Brasil
+- 📍 Sede
+- 📺 Canales con links
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧪 Probar el cron localmente
+
+```bash
+curl -H "Authorization: Bearer <CRON_SECRET>" \
+  http://localhost:3000/api/cron/daily-digest
+```
+
+---
+
+## 🌐 Deploy en Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+Variables de entorno requeridas en Vercel:
+
+| Variable | Descripción |
+|---|---|
+| `DATABASE_URL` | Connection string de NeonDB |
+| `RESEND_API_KEY` | API key de Resend |
+| `RESEND_FROM_EMAIL` | Remitente de correos |
+| `NEXTAUTH_SECRET` | Secreto para JWT |
+| `NEXTAUTH_URL` | URL del deploy |
+| `CRON_SECRET` | Secreto para proteger el cron |
+
+> ⚡ El `vercel.json` configura automáticamente el cron job al hacer deploy.
+
+---
+
+<p align="center">
+  Hecho con 🥶 por <a href="https://andalaosa.cl">Andalaosa</a> y Shipibo Studio.
+</p>

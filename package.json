@@ -1,6 +1,6 @@
 {
-  "name": "mundial-notify",
-  "version": "0.1.0",
+  "name": "mundialia",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

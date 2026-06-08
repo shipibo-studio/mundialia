@@ -1,18 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useActionState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { loginAction } from "@/app/actions/auth";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [checking, setChecking] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.loggedIn) router.replace("/app");
+        else setChecking(false);
+      })
+      .catch(() => setChecking(false));
+  }, [router]);
+
   const loginWithState = async (_prev: { error: string } | null, formData: FormData) => loginAction(formData);
   const [state, formAction, pending] = useActionState(loginWithState, null);
+
+  if (checking) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="glass-card rounded-xl p-xl border border-primary/10 shadow-2xl text-center">
+          <p className="typo-body-lg text-text-muted">Cargando...</p>
+        </div>
+      </div>
+    );
+  }
 
   const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const passwordValido = password.length >= 6;
@@ -119,16 +141,6 @@ export default function LoginPage() {
             {pending ? "Entrando..." : "Entrar"}
           </button>
         </form>
-
-        {/* <p className="typo-body-md text-text-muted text-center mt-lg">
-          ¿No tienes cuenta?{" "}
-          <Link
-            href="/register"
-            className="text-primary neon-text-cyan hover:underline cursor-pointer"
-          >
-            Regístrate
-          </Link>
-        </p> */}
       </div>
     </div>
   );

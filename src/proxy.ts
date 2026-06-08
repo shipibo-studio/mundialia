@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/auth-edge";
 
 export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
   const token = request.cookies.get("session")?.value;
 
   if (!token) {
