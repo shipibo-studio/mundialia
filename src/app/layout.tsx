@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/footer";
-import { MobileNav } from "@/components/mobile-nav";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -45,7 +44,6 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-on-surface selection:bg-primary selection:text-on-primary">
         {children}
         <Footer />
-        <MobileNav />
       </body>
     </html>
   );
