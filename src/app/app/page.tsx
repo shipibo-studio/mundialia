@@ -5,7 +5,6 @@ import { mundialData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Hero } from "@/components/hero";
 import { MatchCard } from "@/components/match-card";
-import { KnockoutCard } from "@/components/knockout-card";
 import { SubscriptionsProvider } from "@/components/subscriptions-provider";
 import { formatFechaCompleta } from "@/lib/utils";
 import type { Partido, Jornada } from "@/types";
@@ -19,7 +18,6 @@ const groups = [
 ];
 
 export default function FixturePage() {
-  const [activeTab, setActiveTab] = useState("fixture");
   const [filterGroup, setFilterGroup] = useState("todos");
   const [search, setSearch] = useState("");
 
@@ -51,22 +49,6 @@ export default function FixturePage() {
   const scrolledRef = useRef(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const tab = params.get("tab");
-    if (tab && ["fixture", "eliminatorias"].includes(tab)) setActiveTab(tab);
-  }, []);
-
-  useEffect(() => {
-    const onPopState = () => {
-      const params = new URLSearchParams(window.location.search);
-      const tab = params.get("tab");
-      setActiveTab(tab && ["fixture", "eliminatorias"].includes(tab) ? tab : "fixture");
-    };
-    window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
-  }, []);
-
-  useEffect(() => {
     if (scrolledRef.current || filterGroup !== "todos" || search) return;
     const target = document.getElementById(`jornada-${todayStr}`);
     if (target) { target.scrollIntoView({ behavior: "smooth", block: "start" }); scrolledRef.current = true; }
@@ -77,7 +59,7 @@ export default function FixturePage() {
       <Hero torneo={mundialData.torneo} />
 
       {/* Fixture */}
-      <section className={activeTab !== "fixture" ? "hidden" : ""}>
+      <section>
         <div className="flex flex-col md:flex-row gap-lg items-end mb-lg">
           <div className="w-full md:w-auto overflow-x-auto pb-2 no-scrollbar">
             <div className="flex gap-xs" id="group-filters">
@@ -123,16 +105,6 @@ export default function FixturePage() {
           </div>
         </SubscriptionsProvider>
       </section>
-
-      {/* Eliminatorias */}
-      <section className={activeTab !== "eliminatorias" ? "hidden" : ""}>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-          {Object.entries(mundialData.fixture.fase_eliminatoria).map(([key, data]) => (
-            <KnockoutCard key={key} nombre={key.replace(/_/g, " ")} data={data} />
-          ))}
-        </div>
-      </section>
-
 
     </>
   );

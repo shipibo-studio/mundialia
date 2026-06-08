@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const tabs = [
   { id: "fixture", label: "Fixture", href: "/app" },
   { id: "canales", label: "Canales", href: "/app/canales" },
-  { id: "eliminatorias", label: "Eliminatorias", href: "/app?tab=eliminatorias" },
+  { id: "eliminatorias", label: "Eliminatorias", href: "/app/eliminatorias" },
   { id: "configuracion", label: "⚙️", href: "/app/configuracion" },
 ];
 
@@ -16,8 +16,7 @@ export function Header() {
   const activeTab = pathname === "/app" ? "fixture"
     : pathname === "/app/canales" ? "canales"
     : pathname === "/app/configuracion" ? "configuracion"
-    : pathname.includes("tab=eliminatorias") ? "eliminatorias"
-    : pathname.includes("tab=json") ? "json"
+    : pathname === "/app/eliminatorias" ? "eliminatorias"
     : null;
 
   return (

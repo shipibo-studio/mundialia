@@ -64,7 +64,7 @@ export interface FaseEliminatoriaDetail {
 }
 
 export interface FaseEliminatoria {
-  dieciseisavos_de_final: FaseEliminatoriaDetail;
+  segunda_fase: FaseEliminatoriaDetail;
   octavos_de_final: FaseEliminatoriaDetail;
   cuartos_de_final: FaseEliminatoriaDetail;
   semifinales: FaseEliminatoriaDetail;

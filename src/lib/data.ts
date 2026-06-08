@@ -139,7 +139,7 @@ export const mundialData: MundialData = {
             },
             canales_brasil: {
               abierta: ["TV Globo", "SBT"],
-              pago: ["SporTV", "GE TV"],
+              pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
           },
@@ -156,8 +156,8 @@ export const mundialData: MundialData = {
               youtube: ["Chilevisión YouTube (resumen)"],
             },
             canales_brasil: {
-              abierta: ["TV Globo", "SBT"],
-              pago: ["SporTV", "GE TV", "N Sports"],
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
           },
@@ -181,8 +181,8 @@ export const mundialData: MundialData = {
               youtube: ["Chilevisión YouTube (resumen)"],
             },
             canales_brasil: {
-              abierta: ["SBT"],
-              pago: ["SporTV", "GE TV", "N Sports"],
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
           },
@@ -199,8 +199,8 @@ export const mundialData: MundialData = {
               youtube: ["Chilevisión YouTube (resumen)"],
             },
             canales_brasil: {
-              abierta: ["TV Globo"],
-              pago: ["SporTV", "GE TV"],
+              abierta: ["TV Globo", "SBT"],
+              pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
           },
@@ -224,7 +224,7 @@ export const mundialData: MundialData = {
               youtube: ["Chilevisión YouTube (resumen)"],
             },
             canales_brasil: {
-              abierta: ["SBT"],
+              abierta: [],
               pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
@@ -242,10 +242,9 @@ export const mundialData: MundialData = {
               youtube: ["Chilevisión YouTube (resumen)"],
             },
             canales_brasil: {
-              abierta: ["TV Globo"],
-              pago: ["SporTV", "Globoplay (4K)"],
-              youtube: ["CazéTV (en vivo, 4K)"],
-              nota: "Partido de Brasil — cobertura máxima",
+              abierta: ["TV Globo", "SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
             },
           },
           {
@@ -261,7 +260,7 @@ export const mundialData: MundialData = {
               youtube: [],
             },
             canales_brasil: {
-              abierta: ["SBT"],
+              abierta: [],
               pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
@@ -279,7 +278,7 @@ export const mundialData: MundialData = {
               youtube: [],
             },
             canales_brasil: {
-              abierta: [],
+              abierta: ["TV Globo"],
               pago: ["SporTV", "N Sports"],
               youtube: ["CazéTV (en vivo)"],
             },
@@ -298,6 +297,11 @@ export const mundialData: MundialData = {
             hora_chile: "13:00",
             hora_brasil: "14:00",
             sede: "NRG Stadium, Houston",
+            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 10,
@@ -306,6 +310,15 @@ export const mundialData: MundialData = {
             hora_chile: "16:00",
             hora_brasil: "17:00",
             sede: "AT&T Stadium, Dallas",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 11,
@@ -314,6 +327,15 @@ export const mundialData: MundialData = {
             hora_chile: "19:00",
             hora_brasil: "20:00",
             sede: "Lincoln Financial Field, Philadelphia",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 12,
@@ -322,6 +344,11 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "Estadio BBVA, Monterrey",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -337,6 +364,11 @@ export const mundialData: MundialData = {
             hora_chile: "12:00",
             hora_brasil: "13:00",
             sede: "Mercedes-Benz Stadium, Atlanta",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 14,
@@ -345,6 +377,15 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "Lumen Field, Seattle",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 15,
@@ -353,6 +394,15 @@ export const mundialData: MundialData = {
             hora_chile: "18:00",
             hora_brasil: "19:00",
             sede: "Hard Rock Stadium, Miami",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 16,
@@ -361,6 +411,11 @@ export const mundialData: MundialData = {
             hora_chile: "21:00",
             hora_brasil: "22:00",
             sede: "SoFi Stadium, Los Ángeles",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -376,6 +431,15 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "MetLife Stadium, Nueva Jersey",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 18,
@@ -384,6 +448,11 @@ export const mundialData: MundialData = {
             hora_chile: "18:00",
             hora_brasil: "19:00",
             sede: "Gillette Stadium, Boston",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 19,
@@ -392,6 +461,15 @@ export const mundialData: MundialData = {
             hora_chile: "21:00",
             hora_brasil: "22:00",
             sede: "Arrowhead Stadium, Kansas City",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 20,
@@ -400,6 +478,11 @@ export const mundialData: MundialData = {
             hora_chile: "00:00 (+1 día)",
             hora_brasil: "01:00 (+1 día)",
             sede: "Levi's Stadium, San Francisco",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -415,6 +498,11 @@ export const mundialData: MundialData = {
             hora_chile: "13:00",
             hora_brasil: "14:00",
             sede: "NRG Stadium, Houston",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 22,
@@ -423,6 +511,15 @@ export const mundialData: MundialData = {
             hora_chile: "16:00",
             hora_brasil: "17:00",
             sede: "AT&T Stadium, Dallas",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 23,
@@ -431,6 +528,11 @@ export const mundialData: MundialData = {
             hora_chile: "19:00",
             hora_brasil: "20:00",
             sede: "BMO Field, Toronto",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 24,
@@ -439,6 +541,15 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "Estadio Azteca, Ciudad de México",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -454,6 +565,11 @@ export const mundialData: MundialData = {
             hora_chile: "12:00",
             hora_brasil: "13:00",
             sede: "Mercedes-Benz Stadium, Atlanta",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 26,
@@ -462,6 +578,15 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "SoFi Stadium, Los Ángeles",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 27,
@@ -470,6 +595,15 @@ export const mundialData: MundialData = {
             hora_chile: "18:00",
             hora_brasil: "19:00",
             sede: "BC Place, Vancouver",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 28,
@@ -478,6 +612,11 @@ export const mundialData: MundialData = {
             hora_chile: "21:00",
             hora_brasil: "22:00",
             sede: "Estadio Akron, Guadalajara",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -493,6 +632,15 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "Lumen Field, Seattle",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 30,
@@ -501,6 +649,15 @@ export const mundialData: MundialData = {
             hora_chile: "18:00",
             hora_brasil: "19:00",
             sede: "Gillette Stadium, Boston",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 31,
@@ -522,6 +679,11 @@ export const mundialData: MundialData = {
             hora_chile: "23:00",
             hora_brasil: "00:00 (+1 día)",
             sede: "Levi's Stadium, San Francisco",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -537,6 +699,11 @@ export const mundialData: MundialData = {
             hora_chile: "13:00",
             hora_brasil: "14:00",
             sede: "NRG Stadium, Houston",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 34,
@@ -545,6 +712,15 @@ export const mundialData: MundialData = {
             hora_chile: "16:00",
             hora_brasil: "17:00",
             sede: "BMO Field, Toronto",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 35,
@@ -553,6 +729,11 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "Arrowhead Stadium, Kansas City",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 36,
@@ -561,6 +742,15 @@ export const mundialData: MundialData = {
             hora_chile: "00:00 (+1 día)",
             hora_brasil: "01:00 (+1 día)",
             sede: "Estadio BBVA, Monterrey",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -576,6 +766,15 @@ export const mundialData: MundialData = {
             hora_chile: "12:00",
             hora_brasil: "13:00",
             sede: "Mercedes-Benz Stadium, Atlanta",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 38,
@@ -584,6 +783,15 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "SoFi Stadium, Los Ángeles",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 39,
@@ -592,6 +800,11 @@ export const mundialData: MundialData = {
             hora_chile: "18:00",
             hora_brasil: "19:00",
             sede: "Hard Rock Stadium, Miami",
+            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 40,
@@ -600,6 +813,11 @@ export const mundialData: MundialData = {
             hora_chile: "21:00",
             hora_brasil: "22:00",
             sede: "BC Place, Vancouver",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -615,6 +833,15 @@ export const mundialData: MundialData = {
             hora_chile: "13:00",
             hora_brasil: "14:00",
             sede: "AT&T Stadium, Dallas",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 42,
@@ -623,6 +850,11 @@ export const mundialData: MundialData = {
             hora_chile: "17:00",
             hora_brasil: "18:00",
             sede: "Lincoln Financial Field, Philadelphia",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 43,
@@ -631,6 +863,15 @@ export const mundialData: MundialData = {
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "MetLife Stadium, Nueva Jersey",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 44,
@@ -639,6 +880,11 @@ export const mundialData: MundialData = {
             hora_chile: "23:00",
             hora_brasil: "00:00 (+1 día)",
             sede: "Levi's Stadium, San Francisco",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -654,6 +900,15 @@ export const mundialData: MundialData = {
             hora_chile: "13:00",
             hora_brasil: "14:00",
             sede: "NRG Stadium, Houston",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 46,
@@ -662,6 +917,15 @@ export const mundialData: MundialData = {
             hora_chile: "16:00",
             hora_brasil: "17:00",
             sede: "Gillette Stadium, Boston",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo","SBT"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 47,
@@ -670,6 +934,15 @@ export const mundialData: MundialData = {
             hora_chile: "19:00",
             hora_brasil: "20:00",
             sede: "BMO Field, Toronto",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 48,
@@ -678,6 +951,11 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "Estadio Akron, Guadalajara",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -694,6 +972,11 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "BC Place, Vancouver",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 50,
@@ -702,6 +985,11 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "Levi's Stadium, San Francisco",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 51,
@@ -710,6 +998,11 @@ export const mundialData: MundialData = {
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "NRG Stadium, Houston",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 52,
@@ -722,6 +1015,11 @@ export const mundialData: MundialData = {
             canales_brasil_destacados: {
               abierta: ["TV Globo"],
               youtube: ["CazéTV (en vivo, 4K)"],
+            },
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
             },
           },
         ],
@@ -739,6 +1037,15 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "Estadio Azteca, Ciudad de México",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 54,
@@ -747,6 +1054,11 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "Estadio Akron, Guadalajara",
+            canales_brasil: {
+              abierta: ["TV Globo"],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 55,
@@ -755,6 +1067,15 @@ export const mundialData: MundialData = {
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "AT&T Stadium, Dallas",
+            canales_chile: {
+              abierta: ["Chilevisión"],
+              pago: ["DSports/DirecTV", "DGO"],
+              youtube: ["Chilevisión YouTube (resumen)"],
+            },            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
           {
             numero: 56,
@@ -763,6 +1084,11 @@ export const mundialData: MundialData = {
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "Lumen Field, Seattle",
+            canales_brasil: {
+              abierta: [],
+              pago: ["SporTV", "N Sports"],
+              youtube: ["CazéTV (en vivo)"],
+            },
           },
         ],
       },
@@ -771,7 +1097,7 @@ export const mundialData: MundialData = {
       },
     ],
     fase_eliminatoria: {
-      dieciseisavos_de_final: {
+      segunda_fase: {
         fecha_inicio: "2026-07-01",
         fecha_fin: "2026-07-05",
         total_partidos: 16,
@@ -782,9 +1108,9 @@ export const mundialData: MundialData = {
           youtube: ["Chilevisión YouTube (resúmenes)"],
         },
         canales_brasil: {
-          abierta: ["TV Globo (si juega Brasil)", "SBT"],
-          pago: ["SporTV", "Globoplay (4K)", "N Sports"],
-          youtube: ["CazéTV (en vivo, todos los partidos)"],
+          abierta: [],
+          pago: ["SporTV", "N Sports"],
+          youtube: ["CazéTV (en vivo)"],
         },
       },
       octavos_de_final: {
@@ -909,8 +1235,10 @@ export const mundialData: MundialData = {
     "ESPN Deportes — fixture oficial FIFA 2026",
     "El Mostrador — canales TV Chile (publicado 29/05/2026)",
     "Redgol.cl — Chilevisión 52 partidos",
+    "Chilevisión.cl — calendario oficial CHV (publicado 05/06/2026)",
     "tvenserio.com — alianza ClaroVTR + Chilevisión 4K",
     "Goal.com — canales Brasil 2026",
+    "Calendário do Mundial 2026 (PDF Globo/CazéTV/SBT) — canales Brasil",
     "ElComercio.pe — CazéTV 104 partidos YouTube Brasil",
     "Sopitas.com — CazéTV YouTube Brasil",
     "AlAireLibre.cl — YouTube FIFA acuerdo Chile",

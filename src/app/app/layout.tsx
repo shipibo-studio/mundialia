@@ -9,7 +9,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     <AuthProvider>
       <ToastProvider>
         <Header />
-        <main className="pt-24 pb-20 md:pb-12 px-gutter max-w-container-max mx-auto overflow-x-hidden">
+        <main className="pt-34 sm:pt-28 pb-20 md:pb-12 px-gutter max-w-container-max mx-auto overflow-x-hidden">
           {children}
         </main>
       </ToastProvider>
