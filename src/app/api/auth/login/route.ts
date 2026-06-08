@@ -45,11 +45,8 @@ export async function POST(request: NextRequest) {
   const token = await createToken({ id: user.id, email: user.email });
   await setSession(token);
 
-  const response = NextResponse.redirect(
-    new URL("/app", process.env.NEXTAUTH_URL || "http://localhost:3000")
-  );
-
-  // También forzar la cookie en la respuesta de redirect
+  // Devolver JSON en vez de redirect para que el cliente maneje la redirección
+  const response = NextResponse.json({ ok: true });
   response.cookies.set("session", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",

@@ -5,7 +5,7 @@ export function Footer() {
         FIFA WORLD CUP 2026
       </div>
       <div className="typo-body-md text-text-muted">
-        World Cup 2016 Data Broadcaster. Todos los datos son de fuentes libre de ©.
+        World Cup 2026 Data Broadcaster. Todos los datos son de fuentes libre de ©.
       </div>
     </footer>
   );

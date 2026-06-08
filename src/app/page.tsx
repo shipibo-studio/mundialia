@@ -46,17 +46,15 @@ export default function LoginPage() {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ email, password }),
-        redirect: "manual", // no seguir redirect automático
       });
 
-      if (res.ok || res.status === 302 || res.status === 307) {
-        // Login exitoso, redirigir manualmente
-        // La cookie ya está seteada por el route handler
+      const data = await res.json();
+
+      if (data.ok) {
         window.location.href = "/app";
         return;
       }
 
-      const data = await res.json();
       setError(data.error || "Error al iniciar sesión");
     } catch {
       setError("Error de conexión");
