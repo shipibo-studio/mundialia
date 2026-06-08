@@ -5,9 +5,10 @@ export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get("session")?.value;
 
+  console.log(`[proxy] ${pathname} | token: ${token ? "present" : "missing"}`);
+
   if (!token) {
     const loginUrl = new URL("/", request.url);
-    loginUrl.searchParams.set("redirect", pathname);
     return NextResponse.redirect(loginUrl);
   }
 

@@ -100,13 +100,6 @@ export default function LoginForm() {
             )}
           >{pending ? "Entrando..." : "Entrar"}</button>
         </form>
-
-        <p className="typo-body-md text-text-muted text-center mt-lg">
-          ¿No tienes cuenta?{" "}
-          <Link href="/register" className="text-primary neon-text-cyan hover:underline cursor-pointer">
-            Regístrate
-          </Link>
-        </p>
       </div>
     </div>
   );

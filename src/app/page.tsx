@@ -1,11 +1,14 @@
-import { getSession } from "@/lib/auth";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import LoginForm from "@/components/login-form";
 
-export default async function LoginPage() {
-  const session = await getSession();
+export const dynamic = "force-dynamic";
 
-  if (session) {
+export default async function LoginPage() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("session")?.value;
+
+  if (token) {
     redirect("/app");
   }
 

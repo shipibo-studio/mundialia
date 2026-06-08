@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getUserByEmail } from "@/lib/queries";
-import { createToken, setSession, verifyPassword } from "@/lib/auth";
+import { createToken, verifyPassword } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
@@ -43,9 +43,7 @@ export async function POST(request: NextRequest) {
   }
 
   const token = await createToken({ id: user.id, email: user.email });
-  await setSession(token);
 
-  // Devolver JSON en vez de redirect para que el cliente maneje la redirección
   const response = NextResponse.json({ ok: true });
   response.cookies.set("session", token, {
     httpOnly: true,
