@@ -280,7 +280,7 @@ export function MatchCard({ partido }: MatchCardProps) {
                 >
                   {isSubscribed
                     ? "🔔 Notificaciones activadas"
-                    : "🔕 Notificarme"}
+                    : "🔕 Activar notificaciones"}
                 </span>
               </label>
             </div>
