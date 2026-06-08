@@ -8,9 +8,14 @@ import type { Partido } from "@/types";
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-function getTodayMatches(): Partido[] {
-  const today = '2026-06-11'; // YYYY-MM-DD
+function chileToday(): string {
+  const ahora = new Date();
+  const chileOffset = -4 * 60; // GMT-4 en minutos
+  const chileDate = new Date(ahora.getTime() + (ahora.getTimezoneOffset() + chileOffset) * 60000);
+  return chileDate.toISOString().slice(0, 10);
+}
 
+function getTodayMatches(today: string): Partido[] {
   const matches: Partido[] = [];
   for (const jornada of mundialData.fixture.fase_grupos) {
     if (jornada.fecha === today && jornada.partidos) {
@@ -19,7 +24,6 @@ function getTodayMatches(): Partido[] {
       }
     }
   }
-
   return matches;
 }
 
@@ -52,9 +56,17 @@ function formatCanales(p: Partido): { chile: string; brasil: string } {
   };
 }
 
+function formatFechaEsp(fecha: string): string {
+  const dias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+  const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const d = new Date(fecha + "T12:00:00-04:00");
+  return `${dias[d.getDay()]} ${d.getDate()} de ${meses[d.getMonth()]}`;
+}
+
 function buildDigestHtml(
   matches: (Partido & { canalesResume: { chile: string; brasil: string } })[]
 ): string {
+  const today = chileToday();
   const matchCards = matches
     .map(
       (p) => `
@@ -102,7 +114,7 @@ function buildDigestHtml(
   <div class="container">
     <div class="header">
       <h1>⚽ MundialIA 2026</h1>
-      <p>📋 Resumen de partidos de hoy</p>
+      <p>📋 ${formatFechaEsp(today)}</p>
     </div>
     ${matchCards}
     <div class="cta">
@@ -125,7 +137,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const todayMatches = getTodayMatches();
+  const today = chileToday();
+  const todayFecha = formatFechaEsp(today);
+  const todayMatches = getTodayMatches(today);
 
   if (todayMatches.length === 0) {
     console.log("[cron] No hay partidos hoy");
@@ -185,7 +199,7 @@ export async function GET(request: NextRequest) {
     try {
       await sendEmail({
         to: user.email,
-        subject: `⚽ MundialIA — ${count} partido${count > 1 ? "s" : ""} hoy`,
+        subject: `⚽ MundialIA — ${count} partido${count > 1 ? "s" : ""} · ${todayFecha}`,
         html,
       });
       sent++;
