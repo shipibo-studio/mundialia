@@ -44,18 +44,22 @@ export async function POST(request: NextRequest) {
 
   const token = await createToken({ id: user.id, email: user.email });
 
+  // Cookie con expires explícito para compatibilidad iOS Safari
+  const maxAge = 60 * 60 * 24 * 7; // 7 días
+  const expires = new Date(Date.now() + maxAge * 1000);
+
   const response = NextResponse.json({ ok: true });
 
-  // Setear cookie usando NextResponse (más compatible con Next.js 16)
   response.cookies.set("session", token, {
     httpOnly: true,
     secure: true,
     sameSite: "lax",
-    maxAge: 60 * 60 * 24 * 7, // 7 días
+    maxAge,
+    expires,
     path: "/",
   });
 
-  console.log("[login] Cookie set for user:", user.email);
+  console.log("[login] Cookie set for user:", user.email, "token length:", token.length);
 
   return response;
 }

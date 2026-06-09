@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 export default function LoginForm() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -30,8 +32,12 @@ export default function LoginForm() {
       const data = await res.json();
 
       if (data.ok) {
-        // Usar location.replace para forzar navegación completa y recargar cookies
-        window.location.replace("/app");
+        // Delay para asegurar que la cookie se establezca en Safari iOS
+        await new Promise((resolve) => setTimeout(resolve, 300));
+        
+        // Usar router.push que es más confiable que window.location
+        router.push("/app");
+        router.refresh(); // Forzar recarga de server components
         return;
       }
 
@@ -39,7 +45,6 @@ export default function LoginForm() {
     } catch {
       setError("Error de conexión");
     } finally {
-      setPending(false);
       setPending(false);
     }
   };
