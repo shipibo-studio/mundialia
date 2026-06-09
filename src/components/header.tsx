@@ -42,9 +42,15 @@ export function Header() {
           ))}
         </nav>
         <div className="flex gap-xs">
-          <Link href="/api/auth/logout" className="material-symbols-outlined text-primary p-xs rounded-full hover:bg-white/5 cursor-pointer neon-text-cyan">
+          <button
+            onClick={() => {
+              localStorage.removeItem("auth_token");
+              window.location.href = "/api/auth/logout";
+            }}
+            className="material-symbols-outlined text-primary p-xs rounded-full hover:bg-white/5 cursor-pointer neon-text-cyan"
+          >
             logout
-          </Link>
+          </button>
         </div>
       </div>
     </header>

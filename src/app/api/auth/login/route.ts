@@ -44,27 +44,19 @@ export async function POST(request: NextRequest) {
 
   const token = await createToken({ id: user.id, email: user.email });
 
-  // Cookie configurada correctamente para same-site
-  const maxAge = 60 * 60 * 24 * 7; // 7 días
-  const expires = new Date(Date.now() + maxAge * 1000);
+  console.log("[login] ✅ Login exitoso para:", user.email);
 
-  const response = NextResponse.json({ ok: true });
+  // Devolver JSON con token para que el cliente lo guarde en localStorage
+  const response = NextResponse.json({ ok: true, token });
 
+  // Cookie como respaldo (no crítica)
   response.cookies.set("session", token, {
     httpOnly: true,
     secure: true,
-    sameSite: "lax", // lax es correcto para same-site navigation
-    maxAge,
-    expires,
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 7,
     path: "/",
   });
-
-  const host = request.headers.get("host");
-  console.log("[login] ✅ Cookie SET for user:", user.email);
-  console.log("[login] Host:", host);
-  console.log("[login] Token preview:", token.substring(0, 30) + "...");
-  console.log("[login] Expires:", expires.toISOString());
-  console.log("[login] Set-Cookie header:", response.cookies.toString());
 
   return response;
 }

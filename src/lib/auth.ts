@@ -41,11 +41,33 @@ export async function setSession(token: string) {
   });
 }
 
-export async function getSession() {
+export async function getSession(tokenFromHeader?: string) {
+  if (tokenFromHeader) {
+    return verifyToken(tokenFromHeader);
+  }
   const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE_NAME)?.value;
   if (!token) return null;
   return verifyToken(token);
+}
+
+export async function getSessionFromRequest(request: Request) {
+  // Intentar con cookie
+  const cookieStore = await cookies();
+  const cookieToken = cookieStore.get(COOKIE_NAME)?.value;
+  if (cookieToken) {
+    const payload = await verifyToken(cookieToken);
+    if (payload) return payload;
+  }
+
+  // Intentar con Authorization header (localStorage)
+  const authHeader = request.headers.get("authorization");
+  if (authHeader?.startsWith("Bearer ")) {
+    const headerToken = authHeader.slice(7);
+    return verifyToken(headerToken);
+  }
+
+  return null;
 }
 
 export async function destroySession() {

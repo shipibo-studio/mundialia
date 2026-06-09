@@ -51,10 +51,11 @@ export function MatchCard({ partido }: MatchCardProps) {
 
   const handleToggle = async () => {
     setSubLoading(true);
+    const token = localStorage.getItem("auth_token") || undefined;
     // Optimistic update
     setOptimistic(p.numero, !isSubscribed);
     const { toggleSubscription } = await import("@/app/actions/notifications");
-    const result = await toggleSubscription(p.numero, !isSubscribed);
+    const result = await toggleSubscription(p.numero, !isSubscribed, token);
     if (result.ok) {
       showToast(
         !isSubscribed

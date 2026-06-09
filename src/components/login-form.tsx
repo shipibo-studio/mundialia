@@ -16,6 +16,13 @@ export default function LoginForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validación client-side
+    if (!emailValido || !passwordValido) {
+      setError("Por favor completa todos los campos correctamente");
+      return;
+    }
+
     setError("");
     setPending(true);
 
@@ -24,13 +31,13 @@ export default function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ email, password }),
-        credentials: "include",
       });
 
       const data = await res.json();
 
-      if (data.ok) {
-        // Navegación completa del servidor (no client-side) para forzar recarga de cookies
+      if (data.ok && data.token) {
+        // Guardar token en localStorage para persistencia
+        localStorage.setItem("auth_token", data.token);
         window.location.href = "/app";
         return;
       }

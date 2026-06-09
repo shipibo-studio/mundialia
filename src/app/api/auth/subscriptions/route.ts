@@ -1,9 +1,9 @@
-import { getSession } from "@/lib/auth";
+import { getSessionFromRequest } from "@/lib/auth";
 import { NextRequest, NextResponse } from "next/server";
 import sql from "@/lib/db";
 
 export async function POST(request: NextRequest) {
-  const session = await getSession();
+  const session = await getSessionFromRequest(request);
   if (!session) {
     return NextResponse.json({ subscribed: {} });
   }

@@ -5,9 +5,10 @@ import { getSession } from "@/lib/auth";
 
 export async function toggleSubscription(
   partidoNumero: number,
-  subscribe: boolean
+  subscribe: boolean,
+  token?: string
 ): Promise<{ ok: boolean; error?: string }> {
-  const session = await getSession();
+  const session = await getSession(token);
   if (!session) {
     return { ok: false, error: "Debes iniciar sesión" };
   }
@@ -43,9 +44,10 @@ export async function toggleSubscription(
 }
 
 export async function getSubscriptionStatus(
-  partidoNumero: number
+  partidoNumero: number,
+  token?: string
 ): Promise<{ subscribed: boolean }> {
-  const session = await getSession();
+  const session = await getSession(token);
   if (!session) {
     return { subscribed: false };
   }
