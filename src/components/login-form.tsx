@@ -24,13 +24,14 @@ export default function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ email, password }),
-        credentials: "same-origin", // Asegura que las cookies se incluyan
+        credentials: "include",
       });
 
       const data = await res.json();
 
       if (data.ok) {
-        window.location.href = "/app";
+        // Usar location.replace para forzar navegación completa y recargar cookies
+        window.location.replace("/app");
         return;
       }
 
@@ -38,6 +39,7 @@ export default function LoginForm() {
     } catch {
       setError("Error de conexión");
     } finally {
+      setPending(false);
       setPending(false);
     }
   };

@@ -46,16 +46,16 @@ export async function POST(request: NextRequest) {
 
   const response = NextResponse.json({ ok: true });
 
-  // Configuración de cookie compatible con Vercel
+  // Setear cookie usando NextResponse (más compatible con Next.js 16)
   response.cookies.set("session", token, {
     httpOnly: true,
-    secure: true, // Siempre true en producción (Vercel usa HTTPS)
+    secure: true,
     sameSite: "lax",
     maxAge: 60 * 60 * 24 * 7, // 7 días
     path: "/",
   });
 
-  console.log("[login] Cookie set successfully");
+  console.log("[login] Cookie set for user:", user.email);
 
   return response;
 }
