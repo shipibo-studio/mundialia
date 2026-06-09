@@ -44,7 +44,8 @@ export async function POST(request: NextRequest) {
 
   const token = await createToken({ id: user.id, email: user.email });
 
-  // Cookie con expires explícito para compatibilidad iOS Safari
+  // Para iOS Safari: usar sameSite: "none" con secure: true
+  // Safari iOS tiene problemas con cookies Lax en algunos contextos
   const maxAge = 60 * 60 * 24 * 7; // 7 días
   const expires = new Date(Date.now() + maxAge * 1000);
 
@@ -53,13 +54,13 @@ export async function POST(request: NextRequest) {
   response.cookies.set("session", token, {
     httpOnly: true,
     secure: true,
-    sameSite: "lax",
+    sameSite: "none", // none permite cross-site, necesario para iOS Safari
     maxAge,
     expires,
     path: "/",
   });
 
-  console.log("[login] Cookie set for user:", user.email, "token length:", token.length);
+  console.log("[login] Cookie set (sameSite=none) for user:", user.email);
 
   return response;
 }
