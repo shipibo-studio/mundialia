@@ -24,6 +24,7 @@ export default function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ email, password }),
+        credentials: "same-origin", // Asegura que las cookies se incluyan
       });
 
       const data = await res.json();

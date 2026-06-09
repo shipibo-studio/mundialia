@@ -45,13 +45,17 @@ export async function POST(request: NextRequest) {
   const token = await createToken({ id: user.id, email: user.email });
 
   const response = NextResponse.json({ ok: true });
+
+  // Configuración de cookie compatible con Vercel
   response.cookies.set("session", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: true, // Siempre true en producción (Vercel usa HTTPS)
     sameSite: "lax",
-    maxAge: 60 * 60 * 24 * 7,
+    maxAge: 60 * 60 * 24 * 7, // 7 días
     path: "/",
   });
+
+  console.log("[login] Cookie set successfully");
 
   return response;
 }

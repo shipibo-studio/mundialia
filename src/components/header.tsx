@@ -23,7 +23,7 @@ export function Header() {
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-container-max z-50 glass-card backdrop-blur-xl rounded-xl border border-primary/10 shadow-2xl">
       <div className="flex justify-between items-center px-4 py-3">
         <Link href="/app" className="typo-headline-lg text-primary tracking-tight uppercase font-bold neon-text-cyan cursor-pointer hover:opacity-80 transition-opacity">
-          FIFA WORLD CUP 2026
+          Mundialia
         </Link>
         <nav className="hidden md:flex gap-md">
           {tabs.map((tab) => (
