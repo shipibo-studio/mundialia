@@ -96,7 +96,36 @@ src/
 
 ---
 
-## 🕐 Cron diario
+## � Scripts útiles
+
+### Crear usuario con CLI
+
+Para crear nuevos usuarios directamente en la BD con contraseña hasheada:
+
+```bash
+./scripts/create-user.sh usuario@example.com micontraseña123
+```
+
+**Características:**
+- Valida email y contraseña (mín 6 caracteres)
+- Hashea con bcryptjs (10 rounds)
+- Lee `DATABASE_URL` desde `.env`
+- Maneja errores (email duplicado, conexión)
+
+**Ejemplo de salida:**
+```
+📝 Creando usuario...
+Email: usuario@example.com
+✅ Usuario creado exitosamente
+   ID: 550e8400-e29b-41d4-a716-446655440000
+   Email: usuario@example.com
+   Creado: 2026-06-10T20:41:02.123Z
+✨ Listo
+```
+
+---
+
+## �🕐 Cron diario
 
 A las **8:00 AM GMT-4** (0 12 * * * UTC), un cron revisa los partidos del día y envía un email digest a cada usuario con los partidos que tiene suscritos, incluyendo:
 

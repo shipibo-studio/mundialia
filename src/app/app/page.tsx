@@ -45,13 +45,17 @@ export default function FixturePage() {
   }, []);
 
   const hasResults = filteredJornadas.length > 0;
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const todayStr = new Date().toLocaleDateString('en-CA');
   const scrolledRef = useRef(false);
 
   useEffect(() => {
     if (scrolledRef.current || filterGroup !== "todos" || search) return;
     const target = document.getElementById(`jornada-${todayStr}`);
-    if (target) { target.scrollIntoView({ behavior: "smooth", block: "start" }); scrolledRef.current = true; }
+    if (target) {
+      const offsetTop = target.offsetTop - 110;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      scrolledRef.current = true;
+    }
   }, [filteredJornadas, filterGroup, search]);
 
   return (

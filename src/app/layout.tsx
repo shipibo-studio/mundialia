@@ -18,7 +18,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Dónde 📺 Mundial 2026",
   description:
-    "Fixture ver los partidos del mundial y notificación de los partidos 🇨🇱🇧🇷",
+    "Fixture, calendario del mundial, canales de transmisión y notificación de los partidos 🇨🇱🇧🇷",
   icons: {
     icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚽</text></svg>',
   },
