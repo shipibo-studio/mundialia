@@ -35,6 +35,7 @@ export interface Partido {
   hora_brasil: string;
   sede: string;
   nota?: string;
+  resultado?: string;
   canales_chile?: MatchChannels;
   canales_brasil?: MatchChannels;
   canales_brasil_destacados?: MatchChannels;

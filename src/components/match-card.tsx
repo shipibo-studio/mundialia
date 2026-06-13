@@ -37,9 +37,10 @@ function CanalBadge({ nombre, className }: { nombre: string; className?: string 
 
 interface MatchCardProps {
   partido: Partido;
+  past?: boolean;
 }
 
-export function MatchCard({ partido }: MatchCardProps) {
+export function MatchCard({ partido, past = false }: MatchCardProps) {
   const [expanded, setExpanded] = useState(false);
   const [subLoading, setSubLoading] = useState(false);
   const { loggedIn } = useAuth();
@@ -105,8 +106,8 @@ export function MatchCard({ partido }: MatchCardProps) {
         cardBorderClass
       )}
     >
-      <div className="flex cursor-pointer hover:shadow-xl hover:scale-[1.01] transition-all"
-        onClick={() => setExpanded(!expanded)}
+      <div className={cn("flex transition-all", !past && "cursor-pointer hover:shadow-xl hover:scale-[1.01]")}
+        onClick={() => !past && setExpanded(!expanded)}
       >
         <div className={cn("w-1.5 shrink-0", accentColorClass)} />
         <div className="flex-1 p-md flex flex-col md:flex-row md:items-center justify-between gap-md">
@@ -134,40 +135,56 @@ export function MatchCard({ partido }: MatchCardProps) {
             )}
           </div>
           <div className="flex items-center justify-center gap-xl md:border-l border-white/10 md:pl-xl shrink-0">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 mb-1">
-                <span className="text-xs">🇨🇱</span>
-                <span className="typo-headline-md">
-                  {p.hora_chile}
-                </span>
+            {/* Resultado final si el partido terminó */}
+            {p.resultado ? (
+              <div className="text-center min-w-[90px]">
+                <div className="typo-headline-md text-primary neon-text-cyan font-bold tracking-widest">
+                  {p.resultado}
+                </div>
+                <div className="typo-label-caps text-text-muted uppercase">
+                  FINAL
+                </div>
               </div>
-              <div className="typo-label-caps text-text-muted uppercase">
-                CHILE
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 mb-1">
-                <span className="text-xs">🇧🇷</span>
-                <span className="typo-headline-md">
-                  {p.hora_brasil}
-                </span>
-              </div>
-              <div className="typo-label-caps text-text-muted uppercase">
-                BRASIL
-              </div>
-            </div>
-            <span
-              className={cn(
-                "material-symbols-outlined text-text-muted transition-transform duration-300",
-                expanded && "rotate-180"
-              )}
-            >
-              expand_more
-            </span>
+            ) : (
+              <>
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <span className="text-xs">🇨🇱</span>
+                    <span className="typo-headline-md">
+                      {p.hora_chile}
+                    </span>
+                  </div>
+                  <div className="typo-label-caps text-text-muted uppercase">
+                    CHILE
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center gap-1 mb-1">
+                    <span className="text-xs">🇧🇷</span>
+                    <span className="typo-headline-md">
+                      {p.hora_brasil}
+                    </span>
+                  </div>
+                  <div className="typo-label-caps text-text-muted uppercase">
+                    BRASIL
+                  </div>
+                </div>
+              </>
+            )}
+            {!past && (
+              <span
+                className={cn(
+                  "material-symbols-outlined text-text-muted transition-transform duration-300",
+                  expanded && "rotate-180"
+                )}
+              >
+                expand_more
+              </span>
+            )}
           </div>
         </div>
       </div>
-      {expanded && (
+      {!past && expanded && (
         <div className="bg-surface-navy border-t border-white/5 p-lg">
           <div className="grid md:grid-cols-3 gap-lg">
             <div className="col-span-1">
@@ -241,8 +258,8 @@ export function MatchCard({ partido }: MatchCardProps) {
             </div>
           </div>
 
-          {/* Subscribe checkbox */}
-          {loggedIn && (
+          {/* Subscribe checkbox — oculto en partidos pasados */}
+          {!past && loggedIn && (
             <div className="mt-4 pt-4 border-t border-white/5">
               <label
                 className="flex items-center gap-3 cursor-pointer group"
