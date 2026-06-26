@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 
 const tabs = [
   { id: "fixture", label: "Fixture", href: "/app" },
-  { id: "canales", label: "Canales", href: "/app/canales" },
   { id: "eliminatorias", label: "Eliminatorias", href: "/app/eliminatorias" },
+  { id: "canales", label: "Canales", href: "/app/canales" },
   { id: "configuracion", label: "⚙️", href: "/app/configuracion" },
 ];
 

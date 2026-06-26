@@ -49,12 +49,24 @@ export interface Jornada {
   partidos?: Partido[];
 }
 
+export interface EliminatoriaMatch {
+  numero: number;
+  partido: string;
+  hora_chile: string;
+  hora_brasil: string;
+  sede: string;
+  fecha?: string;
+  resultado?: string;
+  canales_chile?: MatchChannels;
+  canales_brasil?: MatchChannels;
+}
+
 export interface FaseEliminatoriaDetail {
   fecha_inicio?: string;
   fecha_fin?: string;
   fecha?: string;
   total_partidos?: number;
-  partidos?: string;
+  partidos?: string | EliminatoriaMatch[];
   sedes?: string[];
   sede?: string;
   nota?: string;
