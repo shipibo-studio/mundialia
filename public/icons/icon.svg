@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="100%" stop-color="#0a0e16"/>
+    </radialGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="246" fill="none" stroke="#00dbe7" stroke-width="4" opacity="0.3"/>
+  <!-- Soccer ball -->
+  <circle cx="256" cy="256" r="140" fill="white"/>
+  <!-- Pentagon center -->
+  <polygon points="256,175 280,196 272,225 240,225 232,196" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon top -->
+  <polygon points="256,97 278,117 270,144 242,144 234,117" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon bottom -->
+  <polygon points="256,367 278,387 270,414 242,414 234,387" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon left -->
+  <polygon points="146,205 168,225 160,252 132,252 124,225" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon right -->
+  <polygon points="366,205 388,225 380,252 352,252 344,225" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon top-right -->
+  <polygon points="340,120 362,140 354,167 326,167 318,140" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon top-left -->
+  <polygon points="172,120 194,140 186,167 158,167 150,140" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon bottom-right -->
+  <polygon points="340,345 362,365 354,392 326,392 318,365" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Pentagon bottom-left -->
+  <polygon points="172,345 194,365 186,392 158,392 150,365" fill="#1a1a2e" stroke="#1a1a2e" stroke-width="2"/>
+  <!-- Lines connecting pentagons -->
+  <line x1="256" y1="175" x2="256" y2="144" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="256" y1="367" x2="256" y2="414" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="272" y1="225" x2="318" y2="167" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="240" y1="225" x2="194" y2="167" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="240" y1="225" x2="194" y2="392" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="272" y1="225" x2="326" y2="392" stroke="#1a1a2e" stroke-width="3"/>
+  <!-- Edge lines -->
+  <line x1="232" y1="196" x2="150" y2="140" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="280" y1="196" x2="362" y2="140" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="232" y1="196" x2="150" y2="365" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="280" y1="196" x2="362" y2="365" stroke="#1a1a2e" stroke-width="3"/>
+  <!-- Outline -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#1a1a2e" stroke-width="4"/>
+  <!-- Neon glow ring -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#00dbe7" stroke-width="3" opacity="0.6"/>
+</svg>

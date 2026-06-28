@@ -16,11 +16,22 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Dónde 📺 Mundial 2026",
+  title: "Mundialia — Dónde ver el Mundial 2026",
   description:
     "Fixture, calendario del mundial, canales de transmisión y notificación de los partidos 🇨🇱🇧🇷",
+  manifest: "/manifest.json",
   icons: {
-    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚽</text></svg>',
+    icon: "/icons/icon.svg",
+    shortcut: "/icons/icon.svg",
+    apple: "/icons/icon.svg",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "Mundialia",
+    statusBarStyle: "black-translucent",
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
   },
 };
 
@@ -44,6 +55,20 @@ export default function RootLayout({
       <body className="min-h-screen bg-background text-on-surface selection:bg-primary selection:text-on-primary">
         {children}
         <Footer />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                  navigator.serviceWorker
+                    .register("/sw.js")
+                    .then((reg) => console.log("SW registered:", reg.scope))
+                    .catch((err) => console.error("SW registration failed:", err));
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );
