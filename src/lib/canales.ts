@@ -37,8 +37,7 @@ export const canalesRegistro: Record<string, CanalInfo> = {
   // 🇧🇷 Brasil
   "TV Globo": {
     nombre: "TV Globo",
-    sitio:
-      "https://futemax4.biz/assistir-globo-ao-vivo-tv-globo-online-24-horas-hd",
+    sitio: "https://futemax.studio/",
   },
   SBT: {
     nombre: "SBT",
@@ -63,15 +62,15 @@ export const canalesRegistro: Record<string, CanalInfo> = {
   },
   "CazéTV (en vivo)": {
     nombre: "CazéTV",
-    youtube: "https://www.youtube.com/@CazeTV",
+    sitio: "https://futbol-libres.su/",
   },
   "CazéTV (en vivo, 4K)": {
     nombre: "CazéTV 4K",
-    youtube: "https://www.youtube.com/@CazeTV",
+    sitio: "https://futbol-libres.su/",
   },
   CazéTV: {
     nombre: "CazéTV",
-    youtube: "https://www.youtube.com/@CazeTV",
+    sitio: "https://futbol-libres.su/",
   },
 };
 

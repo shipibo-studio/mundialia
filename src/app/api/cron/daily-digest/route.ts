@@ -3,20 +3,33 @@ import sql from "@/lib/db";
 import { mundialData } from "@/lib/data";
 import { sendEmail } from "@/lib/email";
 import { buscarCanal } from "@/lib/canales";
-import type { Partido } from "@/types";
+import type { Partido, EliminatoriaMatch, MatchChannels } from "@/types";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
+type CronMatch = {
+  numero: number;
+  partido: string;
+  grupo?: string;          // "SEGUNDA FASE" para eliminatoria
+  hora_chile: string;
+  hora_brasil: string;
+  sede: string;
+  canales_chile?: MatchChannels;
+  canales_brasil?: MatchChannels;
+};
+
 function chileToday(): string {
   const ahora = new Date();
-  const chileOffset = -4 * 60; // GMT-4 en minutos
+  const chileOffset = -4 * 60;
   const chileDate = new Date(ahora.getTime() + (ahora.getTimezoneOffset() + chileOffset) * 60000);
   return chileDate.toISOString().slice(0, 10);
 }
 
-function getTodayMatches(today: string): Partido[] {
-  const matches: Partido[] = [];
+function getTodayMatches(today: string): CronMatch[] {
+  const matches: CronMatch[] = [];
+
+  // Fase de grupos
   for (const jornada of mundialData.fixture.fase_grupos) {
     if (jornada.fecha === today && jornada.partidos) {
       for (const p of jornada.partidos) {
@@ -24,6 +37,23 @@ function getTodayMatches(today: string): Partido[] {
       }
     }
   }
+
+  // Segunda Fase (eliminatorias)
+  const sf = mundialData.fixture.fase_eliminatoria.segunda_fase;
+  const sfChannels = { canales_chile: sf.canales_chile, canales_brasil: sf.canales_brasil };
+  if (Array.isArray(sf.partidos)) {
+    for (const p of sf.partidos) {
+      if (p.fecha === today) {
+        matches.push({
+          ...p,
+          grupo: "SEGUNDA FASE",
+          canales_chile: p.canales_chile ?? sfChannels.canales_chile,
+          canales_brasil: p.canales_brasil ?? sfChannels.canales_brasil,
+        } as CronMatch);
+      }
+    }
+  }
+
   return matches;
 }
 
@@ -36,7 +66,7 @@ function canalLink(nombre: string): string {
     : label;
 }
 
-function formatCanales(p: Partido): { chile: string; brasil: string } {
+function formatCanales(p: CronMatch): { chile: string; brasil: string } {
   const chile: string[] = [];
   const brasil: string[] = [];
 
@@ -64,14 +94,14 @@ function formatFechaEsp(fecha: string): string {
 }
 
 function buildDigestHtml(
-  matches: (Partido & { canalesResume: { chile: string; brasil: string } })[]
+  matches: (CronMatch & { canalesResume: { chile: string; brasil: string } })[]
 ): string {
   const today = chileToday();
   const matchCards = matches
     .map(
       (p) => `
     <div style="background:#10131c;border:1px solid rgba(0,242,255,0.2);border-radius:16px;padding:20px;margin-bottom:12px;box-shadow:0 0 15px rgba(0,242,255,0.1);">
-      <div style="font-size:12px;color:#00f2ff;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">Grupo ${p.grupo}</div>
+      <div style="font-size:12px;color:#00f2ff;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;">${p.grupo || "SEGUNDA FASE"}</div>
       <div style="font-size:20px;color:#00f2ff;margin:0 0 12px;text-shadow:0 0 10px rgba(0,242,255,0.5);">${p.partido}</div>
       <table style="width:100%;border-collapse:collapse;font-size:13px;">
         <tr><td style="color:#849495;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">🇨🇱 Hora Chile</td><td style="color:#e0e2ee;font-weight:600;text-align:right;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">${p.hora_chile}</td></tr>
@@ -187,9 +217,9 @@ export async function GET(request: NextRequest) {
   for (const [, user] of userMap) {
     const userMatches = user.partidos
       .map((num) => matchesMap.get(num))
-      .filter(Boolean) as (Partido & {
-      canalesResume: { chile: string; brasil: string };
-    })[];
+      .filter(Boolean) as (CronMatch & {
+        canalesResume: { chile: string; brasil: string };
+      })[];
 
     if (userMatches.length === 0) continue;
 

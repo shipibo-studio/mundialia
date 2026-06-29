@@ -1253,6 +1253,7 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "AT&T Stadium, Dallas",
+            resultado: "0-0",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1271,6 +1272,7 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "SoFi Stadium, Los Ángeles",
+            resultado: "3-2",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1373,6 +1375,7 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "Gillette Stadium, Foxborough (Boston)",
+            resultado: "1-4",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1391,6 +1394,7 @@ export const mundialData: MundialData = {
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "BMO Field, Toronto",
+            resultado: "5-0",
             canales_chile: {
               abierta: [],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1409,6 +1413,7 @@ export const mundialData: MundialData = {
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "NRG Stadium, Houston",
+            resultado: "0-0",
             canales_chile: {
               abierta: [],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1427,6 +1432,7 @@ export const mundialData: MundialData = {
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "Estadio Akron, Guadalajara",
+            resultado: "0-1",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1445,6 +1451,7 @@ export const mundialData: MundialData = {
             hora_chile: "23:00",
             hora_brasil: "00:00 (+1 día)",
             sede: "BC Place, Vancouver",
+            resultado: "1-5",
             canales_chile: {
               abierta: [],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1463,6 +1470,7 @@ export const mundialData: MundialData = {
             hora_chile: "23:00",
             hora_brasil: "00:00 (+1 día)",
             sede: "Lumen Field, Seattle",
+            resultado: "1-1",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1489,6 +1497,7 @@ export const mundialData: MundialData = {
             hora_chile: "17:00",
             hora_brasil: "18:00",
             sede: "MetLife Stadium, East Rutherford (Nueva Jersey)",
+            resultado: "0-2",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1507,6 +1516,7 @@ export const mundialData: MundialData = {
             hora_chile: "17:00",
             hora_brasil: "18:00",
             sede: "Lincoln Financial Field, Philadelphia",
+            resultado: "2-1",
             canales_chile: {
               abierta: [],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1525,6 +1535,7 @@ export const mundialData: MundialData = {
             hora_chile: "19:30",
             hora_brasil: "20:30",
             sede: "Hard Rock Stadium, Miami",
+            resultado: "0-0",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1543,6 +1554,7 @@ export const mundialData: MundialData = {
             hora_chile: "19:30",
             hora_brasil: "20:30",
             sede: "Mercedes-Benz Stadium, Atlanta",
+            resultado: "3-1",
             canales_chile: {
               abierta: [],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1561,6 +1573,7 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "Arrowhead Stadium, Kansas City",
+            resultado: "3-3",
             canales_chile: {
               abierta: [],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1579,6 +1592,7 @@ export const mundialData: MundialData = {
             hora_chile: "22:00",
             hora_brasil: "23:00",
             sede: "AT&T Stadium, Dallas",
+            resultado: "1-3",
             canales_chile: {
               abierta: ["Chilevisión"],
               pago: ["DSports/DirecTV", "DGO"],
@@ -1607,6 +1621,7 @@ export const mundialData: MundialData = {
             hora_brasil: "16:00",
             sede: "SoFi Stadium, Inglewood (Los Ángeles)",
             fecha: "2026-06-28",
+            resultado: "0-1",
           },
           {
             numero: 74,
@@ -1618,7 +1633,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 75,
-            partido: "Alemania vs. 3° A/B/C/D/F",
+            partido: "Alemania vs. Paraguay",
             hora_chile: "16:30",
             hora_brasil: "17:30",
             sede: "Gillette Stadium, Foxborough (Boston)",
@@ -1634,7 +1649,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 77,
-            partido: "Costa de Marfil vs. 2° I",
+            partido: "Costa de Marfil vs. Noruega",
             hora_chile: "13:00",
             hora_brasil: "14:00",
             sede: "AT&T Stadium, Dallas",
@@ -1642,7 +1657,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 78,
-            partido: "1° I vs. 3° C/D/F/G/H",
+            partido: "Francia vs. Suecia",
             hora_chile: "17:00",
             hora_brasil: "18:00",
             sede: "MetLife Stadium, East Rutherford (Nueva Jersey)",
@@ -1650,7 +1665,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 79,
-            partido: "México vs. 3° C/E/F/H/I",
+            partido: "México vs. Ecuador",
             hora_chile: "21:00",
             hora_brasil: "22:00",
             sede: "Estadio Azteca, Ciudad de México",
@@ -1658,7 +1673,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 80,
-            partido: "1° L vs. 3° E/H/I/J/K",
+            partido: "Inglaterra vs. RD de Congo",
             hora_chile: "12:00",
             hora_brasil: "13:00",
             sede: "Mercedes-Benz Stadium, Atlanta",
@@ -1666,7 +1681,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 81,
-            partido: "1° G vs. 3° A/E/H/I/J",
+            partido: "Bélgica vs. Senegal",
             hora_chile: "16:00",
             hora_brasil: "17:00",
             sede: "Lumen Field, Seattle",
@@ -1674,7 +1689,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 82,
-            partido: "Estados Unidos vs. 3° B/E/F/I/J",
+            partido: "Estados Unidos vs. Bosnia y Herzegovina",
             hora_chile: "20:00",
             hora_brasil: "21:00",
             sede: "Levi's Stadium, Santa Clara (San Francisco)",
@@ -1682,7 +1697,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 83,
-            partido: "1° H vs. 2° J",
+            partido: "España vs. Austria",
             hora_chile: "15:00",
             hora_brasil: "16:00",
             sede: "SoFi Stadium, Inglewood (Los Ángeles)",
@@ -1690,7 +1705,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 84,
-            partido: "2° K vs. 2° L",
+            partido: "Portugal vs. Croacia",
             hora_chile: "19:00",
             hora_brasil: "20:00",
             sede: "BMO Field, Toronto",
@@ -1698,7 +1713,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 85,
-            partido: "Suiza vs. 3° E/F/G/I/J",
+            partido: "Suiza vs. Argelia",
             hora_chile: "23:00",
             hora_brasil: "00:00 (+1 día)",
             sede: "BC Place, Vancouver",
@@ -1706,7 +1721,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 86,
-            partido: "2° D vs. 2° G",
+            partido: "Australia vs. Egipto",
             hora_chile: "14:00",
             hora_brasil: "15:00",
             sede: "AT&T Stadium, Dallas",
@@ -1714,7 +1729,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 87,
-            partido: "Argentina vs. 2° H",
+            partido: "Argentina vs. Cabo Verde",
             hora_chile: "18:00",
             hora_brasil: "19:00",
             sede: "Hard Rock Stadium, Miami",
@@ -1722,7 +1737,7 @@ export const mundialData: MundialData = {
           },
           {
             numero: 88,
-            partido: "1° K vs. 3° D/E/I/J/L",
+            partido: "Colombia vs. Ghana",
             hora_chile: "21:30",
             hora_brasil: "22:30",
             sede: "Arrowhead Stadium, Kansas City",
@@ -1730,14 +1745,11 @@ export const mundialData: MundialData = {
           },
         ],
         canales_chile: {
-          abierta: ["Chilevisión (partidos seleccionados)"],
-          pago: ["DSports/DirecTV", "DGO", "Disney+"],
-          youtube: ["Chilevisión YouTube (resúmenes)"],
+          abierta: ["Chilevisión"],
         },
         canales_brasil: {
-          abierta: [],
-          pago: ["SporTV", "N Sports"],
-          youtube: ["CazéTV (en vivo)"],
+          abierta: ["TV Globo"],
+          youtube: ["CazéTV"],
         },
       },
       octavos_de_final: {

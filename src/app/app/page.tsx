@@ -20,7 +20,6 @@ const groups = [
 export default function FixturePage() {
   const [filterGroup, setFilterGroup] = useState("todos");
   const [search, setSearch] = useState("");
-  const [scores, setScores] = useState<Record<number, string>>({});
 
   const filteredJornadas = useMemo(() => {
     return mundialData.fixture.fase_grupos
@@ -59,24 +58,6 @@ export default function FixturePage() {
       scrolledRef.current = true;
     }
   }, [filteredJornadas, filterGroup, search]);
-
-  // Fetch resultados desde OpenLigaDB cada 60s
-  useEffect(() => {
-    const fetchScores = async () => {
-      try {
-        const res = await fetch("/api/scores");
-        if (res.ok) {
-          const data = await res.json();
-          setScores(data.scores ?? {});
-        }
-      } catch {
-        // silencioso — los resultados no son críticos
-      }
-    };
-    fetchScores();
-    const interval = setInterval(fetchScores, 60_000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <>
@@ -117,7 +98,7 @@ export default function FixturePage() {
                   <span className="typo-label-caps bg-surface-navy px-3 py-1 rounded-full border border-white/10">{jornada.partidos.length} Partidos</span>
                 </div>
                 <div className="grid gap-md">
-                  {jornada.partidos.map((p) => (<MatchCard key={p.numero} past={!!jornada.fecha && jornada.fecha < todayStr} partido={{ ...p, resultado: scores[p.numero] }} />))}
+                  {jornada.partidos.map((p) => (<MatchCard key={p.numero} past={!!jornada.fecha && jornada.fecha < todayStr} partido={p} />))}
                 </div>
               </div>
             )) : (
