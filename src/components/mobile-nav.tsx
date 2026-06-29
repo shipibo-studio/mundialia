@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { id: "fixture", icon: "calendar_month", label: "Fixture", href: "/app" },
+  { id: "eliminatorias", icon: "account_tree", label: "Eliminatorias", href: "/app" },
+  { id: "fixture", icon: "calendar_month", label: "Fixture", href: "/app/fixture" },
   { id: "canales", icon: "tv", label: "Canales", href: "/app/canales" },
-  { id: "eliminatorias", icon: "account_tree", label: "Eliminatorias", href: "/app/eliminatorias" },
   { id: "configuracion", icon: "settings", label: "Ajustes", href: "/app/configuracion" },
 ];
 
@@ -18,7 +18,7 @@ export function MobileNav() {
     <nav className="fixed bottom-0 w-full flex justify-around p-2 pb-safe bg-surface-container-highest/90 backdrop-blur-xl border-t border-white/5 md:hidden z-50">
       {navItems.map((item) => {
         const isActive =
-          item.id === "fixture"
+          item.id === "eliminatorias"
             ? pathname === "/app"
             : pathname === item.href;
 

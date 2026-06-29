@@ -5,18 +5,18 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { id: "fixture", label: "Fixture", href: "/app" },
-  { id: "eliminatorias", label: "Eliminatorias", href: "/app/eliminatorias" },
+  { id: "eliminatorias", label: "Eliminatorias", href: "/app" },
+  { id: "fixture", label: "Fixture", href: "/app/fixture" },
   { id: "canales", label: "Canales", href: "/app/canales" },
   { id: "configuracion", label: "⚙️", href: "/app/configuracion" },
 ];
 
 export function Header() {
   const pathname = usePathname();
-  const activeTab = pathname === "/app" ? "fixture"
+  const activeTab = pathname === "/app" ? "eliminatorias"
+    : pathname === "/app/fixture" ? "fixture"
     : pathname === "/app/canales" ? "canales"
     : pathname === "/app/configuracion" ? "configuracion"
-    : pathname === "/app/eliminatorias" ? "eliminatorias"
     : null;
 
   return (
