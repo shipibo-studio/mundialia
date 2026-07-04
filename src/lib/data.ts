@@ -1630,6 +1630,7 @@ export const mundialData: MundialData = {
             hora_brasil: "14:00",
             sede: "NRG Stadium, Houston",
             fecha: "2026-06-29",
+            resultado: "2-0",
           },
           {
             numero: 75,
@@ -1638,6 +1639,7 @@ export const mundialData: MundialData = {
             hora_brasil: "17:30",
             sede: "Gillette Stadium, Foxborough (Boston)",
             fecha: "2026-06-29",
+            resultado: "1-2",
           },
           {
             numero: 76,
@@ -1646,6 +1648,7 @@ export const mundialData: MundialData = {
             hora_brasil: "22:00",
             sede: "Estadio BBVA, Monterrey",
             fecha: "2026-06-29",
+            resultado: "0-1",
           },
           {
             numero: 77,
@@ -1654,6 +1657,7 @@ export const mundialData: MundialData = {
             hora_brasil: "14:00",
             sede: "AT&T Stadium, Dallas",
             fecha: "2026-06-30",
+            resultado: "1-2",
           },
           {
             numero: 78,
@@ -1662,6 +1666,7 @@ export const mundialData: MundialData = {
             hora_brasil: "18:00",
             sede: "MetLife Stadium, East Rutherford (Nueva Jersey)",
             fecha: "2026-06-30",
+            resultado: "2-1",
           },
           {
             numero: 79,
@@ -1670,6 +1675,7 @@ export const mundialData: MundialData = {
             hora_brasil: "22:00",
             sede: "Estadio Azteca, Ciudad de México",
             fecha: "2026-06-30",
+            resultado: "2-0",
           },
           {
             numero: 80,
@@ -1678,6 +1684,7 @@ export const mundialData: MundialData = {
             hora_brasil: "13:00",
             sede: "Mercedes-Benz Stadium, Atlanta",
             fecha: "2026-07-01",
+            resultado: "3-0",
           },
           {
             numero: 81,
@@ -1686,6 +1693,7 @@ export const mundialData: MundialData = {
             hora_brasil: "17:00",
             sede: "Lumen Field, Seattle",
             fecha: "2026-07-01",
+            resultado: "2-1",
           },
           {
             numero: 82,
@@ -1694,6 +1702,7 @@ export const mundialData: MundialData = {
             hora_brasil: "21:00",
             sede: "Levi's Stadium, Santa Clara (San Francisco)",
             fecha: "2026-07-01",
+            resultado: "1-0",
           },
           {
             numero: 83,
@@ -1702,6 +1711,7 @@ export const mundialData: MundialData = {
             hora_brasil: "16:00",
             sede: "SoFi Stadium, Inglewood (Los Ángeles)",
             fecha: "2026-07-02",
+            resultado: "4-0",
           },
           {
             numero: 84,
@@ -1710,6 +1720,7 @@ export const mundialData: MundialData = {
             hora_brasil: "20:00",
             sede: "BMO Field, Toronto",
             fecha: "2026-07-02",
+            resultado: "1-1 (5-3 pen.)",
           },
           {
             numero: 85,
@@ -1718,6 +1729,7 @@ export const mundialData: MundialData = {
             hora_brasil: "00:00 (+1 día)",
             sede: "BC Place, Vancouver",
             fecha: "2026-07-02",
+            resultado: "2-0",
           },
           {
             numero: 86,
@@ -1726,6 +1738,7 @@ export const mundialData: MundialData = {
             hora_brasil: "15:00",
             sede: "AT&T Stadium, Dallas",
             fecha: "2026-07-03",
+            resultado: "1-2",
           },
           {
             numero: 87,
@@ -1734,6 +1747,7 @@ export const mundialData: MundialData = {
             hora_brasil: "19:00",
             sede: "Hard Rock Stadium, Miami",
             fecha: "2026-07-03",
+            resultado: "4-1",
           },
           {
             numero: 88,
@@ -1742,6 +1756,7 @@ export const mundialData: MundialData = {
             hora_brasil: "22:30",
             sede: "Arrowhead Stadium, Kansas City",
             fecha: "2026-07-03",
+            resultado: "2-0",
           },
         ],
         canales_chile: {
@@ -1753,9 +1768,75 @@ export const mundialData: MundialData = {
         },
       },
       octavos_de_final: {
-        fecha_inicio: "2026-07-07",
-        fecha_fin: "2026-07-10",
+        fecha_inicio: "2026-07-04",
+        fecha_fin: "2026-07-07",
         total_partidos: 8,
+        partidos: [
+          {
+            numero: 89,
+            partido: "Paraguay vs. Francia",
+            hora_chile: "17:00",
+            hora_brasil: "18:00",
+            sede: "Lincoln Financial Field, Filadelfia",
+            fecha: "2026-07-04",
+          },
+          {
+            numero: 90,
+            partido: "Canadá vs. Marruecos",
+            hora_chile: "12:00",
+            hora_brasil: "13:00",
+            sede: "NRG Stadium, Houston",
+            fecha: "2026-07-04",
+          },
+          {
+            numero: 91,
+            partido: "Brasil vs. Noruega",
+            hora_chile: "16:00",
+            hora_brasil: "17:00",
+            sede: "MetLife Stadium, East Rutherford (Nueva Jersey)",
+            fecha: "2026-07-05",
+          },
+          {
+            numero: 92,
+            partido: "México vs. Inglaterra",
+            hora_chile: "18:00",
+            hora_brasil: "19:00",
+            sede: "Estadio Azteca, Ciudad de México",
+            fecha: "2026-07-05",
+          },
+          {
+            numero: 93,
+            partido: "Portugal vs. España",
+            hora_chile: "14:00",
+            hora_brasil: "15:00",
+            sede: "AT&T Stadium, Dallas",
+            fecha: "2026-07-06",
+          },
+          {
+            numero: 94,
+            partido: "Estados Unidos vs. Bélgica",
+            hora_chile: "17:00",
+            hora_brasil: "18:00",
+            sede: "Lumen Field, Seattle",
+            fecha: "2026-07-06",
+          },
+          {
+            numero: 95,
+            partido: "Argentina vs. Egipto",
+            hora_chile: "12:00",
+            hora_brasil: "13:00",
+            sede: "Mercedes-Benz Stadium, Atlanta",
+            fecha: "2026-07-07",
+          },
+          {
+            numero: 96,
+            partido: "Suiza vs. Colombia",
+            hora_chile: "13:00",
+            hora_brasil: "14:00",
+            sede: "BC Place, Vancouver",
+            fecha: "2026-07-07",
+          },
+        ],
         canales_chile: {
           abierta: ["Chilevisión"],
           pago: ["DSports/DirecTV", "DGO", "Disney+"],
@@ -1839,8 +1920,7 @@ export const mundialData: MundialData = {
         "DSports / DirecTV Sports": "104 partidos — cobertura completa",
         DGO: "Plataforma digital de DirecTV — 104 partidos online",
         "Disney+ Premium (ESPN)": "~30 partidos seleccionados",
-        "Claro TV (canal 557)":
-          "Señal 4K HDR (via acuerdo con Chilevisión)",
+        "Claro TV (canal 557)": "Señal 4K HDR (via acuerdo con Chilevisión)",
         "VTR (canal 710)":
           "Señal 4K HDR (via acuerdo con Chilevisión, requiere dbox smart)",
       },
@@ -1860,7 +1940,8 @@ export const mundialData: MundialData = {
       television_pago: {
         "SporTV (Grupo Globo)":
           "Partidos del Grupo Globo con 55 encuentros en 4K via Globoplay",
-        Globoplay: "Plataforma OTT del Grupo Globo — 4K para partidos de Globo/SporTV",
+        Globoplay:
+          "Plataforma OTT del Grupo Globo — 4K para partidos de Globo/SporTV",
         "GE TV": "Streaming del Grupo Globo (sin 4K)",
         "N Sports": "Partidos seleccionados en alianza con SBT",
       },

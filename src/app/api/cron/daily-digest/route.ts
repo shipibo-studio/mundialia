@@ -11,7 +11,7 @@ export const maxDuration = 60;
 type CronMatch = {
   numero: number;
   partido: string;
-  grupo?: string;          // "SEGUNDA FASE" para eliminatoria
+  grupo?: string; // "SEGUNDA FASE" para eliminatoria
   hora_chile: string;
   hora_brasil: string;
   sede: string;
@@ -22,7 +22,9 @@ type CronMatch = {
 function chileToday(): string {
   const ahora = new Date();
   const chileOffset = -4 * 60;
-  const chileDate = new Date(ahora.getTime() + (ahora.getTimezoneOffset() + chileOffset) * 60000);
+  const chileDate = new Date(
+    ahora.getTime() + (ahora.getTimezoneOffset() + chileOffset) * 60000,
+  );
   return chileDate.toISOString().slice(0, 10);
 }
 
@@ -40,7 +42,10 @@ function getTodayMatches(today: string): CronMatch[] {
 
   // Segunda Fase (eliminatorias)
   const sf = mundialData.fixture.fase_eliminatoria.segunda_fase;
-  const sfChannels = { canales_chile: sf.canales_chile, canales_brasil: sf.canales_brasil };
+  const sfChannels = {
+    canales_chile: sf.canales_chile,
+    canales_brasil: sf.canales_brasil,
+  };
   if (Array.isArray(sf.partidos)) {
     for (const p of sf.partidos) {
       if (p.fecha === today) {
@@ -49,6 +54,25 @@ function getTodayMatches(today: string): CronMatch[] {
           grupo: "SEGUNDA FASE",
           canales_chile: p.canales_chile ?? sfChannels.canales_chile,
           canales_brasil: p.canales_brasil ?? sfChannels.canales_brasil,
+        } as CronMatch);
+      }
+    }
+  }
+
+  // Octavos de Final
+  const of = mundialData.fixture.fase_eliminatoria.octavos_de_final;
+  const ofChannels = {
+    canales_chile: of.canales_chile,
+    canales_brasil: of.canales_brasil,
+  };
+  if (Array.isArray(of.partidos)) {
+    for (const p of of.partidos) {
+      if (p.fecha === today) {
+        matches.push({
+          ...p,
+          grupo: "OCTAVOS DE FINAL",
+          canales_chile: p.canales_chile ?? ofChannels.canales_chile,
+          canales_brasil: p.canales_brasil ?? ofChannels.canales_brasil,
         } as CronMatch);
       }
     }
@@ -71,13 +95,18 @@ function formatCanales(p: CronMatch): { chile: string; brasil: string } {
   const brasil: string[] = [];
 
   if (p.canales_chile) {
-    if (p.canales_chile.abierta) chile.push(...p.canales_chile.abierta.map(canalLink));
-    if (p.canales_chile.pago) chile.push(...p.canales_chile.pago.map(canalLink));
+    if (p.canales_chile.abierta)
+      chile.push(...p.canales_chile.abierta.map(canalLink));
+    if (p.canales_chile.pago)
+      chile.push(...p.canales_chile.pago.map(canalLink));
   }
   if (p.canales_brasil) {
-    if (p.canales_brasil.abierta) brasil.push(...p.canales_brasil.abierta.map(canalLink));
-    if (p.canales_brasil.pago) brasil.push(...p.canales_brasil.pago.map(canalLink));
-    if (p.canales_brasil.youtube) brasil.push(...p.canales_brasil.youtube.map(canalLink));
+    if (p.canales_brasil.abierta)
+      brasil.push(...p.canales_brasil.abierta.map(canalLink));
+    if (p.canales_brasil.pago)
+      brasil.push(...p.canales_brasil.pago.map(canalLink));
+    if (p.canales_brasil.youtube)
+      brasil.push(...p.canales_brasil.youtube.map(canalLink));
   }
 
   return {
@@ -87,14 +116,35 @@ function formatCanales(p: CronMatch): { chile: string; brasil: string } {
 }
 
 function formatFechaEsp(fecha: string): string {
-  const dias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-  const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const dias = [
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado",
+  ];
+  const meses = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+  ];
   const d = new Date(fecha + "T12:00:00-04:00");
   return `${dias[d.getDay()]} ${d.getDate()} de ${meses[d.getMonth()]}`;
 }
 
 function buildDigestHtml(
-  matches: (CronMatch & { canalesResume: { chile: string; brasil: string } })[]
+  matches: (CronMatch & { canalesResume: { chile: string; brasil: string } })[],
 ): string {
   const today = chileToday();
   const matchCards = matches
@@ -108,19 +158,23 @@ function buildDigestHtml(
         <tr><td style="color:#849495;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">🇧🇷 Hora Brasil</td><td style="color:#e0e2ee;font-weight:600;text-align:right;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">${p.hora_brasil}</td></tr>
         <tr><td style="color:#849495;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">📍 Sede</td><td style="color:#e0e2ee;font-weight:600;text-align:right;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">${p.sede}</td></tr>
       </table>
-      ${p.canalesResume.chile
+      ${
+        p.canalesResume.chile
           ? `<div style="margin-top:12px;">
         <div style="font-size:11px;color:#0070ff;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🇨🇱 Cobertura Chile</div>
         <div style="display:inline-block;padding:4px 10px;border-radius:8px;font-size:12px;background:rgba(0,112,255,0.15);color:#ffffff;border:1px solid rgba(0,112,255,0.3);">${p.canalesResume.chile}</div>
-      </div>` : ""
-        }
-      ${p.canalesResume.brasil
+      </div>`
+          : ""
+      }
+      ${
+        p.canalesResume.brasil
           ? `<div style="margin-top:8px;">
         <div style="font-size:11px;color:#00f2ff;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🇧🇷 Cobertura Brasil</div>
         <div style="display:inline-block;padding:4px 10px;border-radius:8px;font-size:12px;background:rgba(0,242,255,0.15);color:#00f2ff;border:1px solid rgba(0,242,255,0.3);">${p.canalesResume.brasil}</div>
-      </div>` : ""
-        }
-    </div>`
+      </div>`
+          : ""
+      }
+    </div>`,
     )
     .join("");
 
@@ -210,7 +264,7 @@ export async function GET(request: NextRequest) {
     todayMatches.map((p) => [
       p.numero,
       { ...p, canalesResume: formatCanales(p) },
-    ])
+    ]),
   );
 
   let sent = 0;
@@ -218,8 +272,8 @@ export async function GET(request: NextRequest) {
     const userMatches = user.partidos
       .map((num) => matchesMap.get(num))
       .filter(Boolean) as (CronMatch & {
-        canalesResume: { chile: string; brasil: string };
-      })[];
+      canalesResume: { chile: string; brasil: string };
+    })[];
 
     if (userMatches.length === 0) continue;
 
